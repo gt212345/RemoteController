@@ -52,6 +52,10 @@ public class WelcomeActivity extends Activity {
 		nextpage = (Button) findViewById(R.id.nextpage);
 		nextpage.setOnClickListener(btnOnclickListener);
 		vibrator = (Vibrator)getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+		play.setClickable(false);
+		stop.setClickable(false);
+		prevpage.setClickable(false);
+		nextpage.setClickable(false);
 	}
 
 	OnClickListener btnOnclickListener = new OnClickListener() {
@@ -147,6 +151,10 @@ public class WelcomeActivity extends Activity {
 									Toast.LENGTH_SHORT).show();
 						}
 					});
+					play.setClickable(true);
+					stop.setClickable(true);
+					prevpage.setClickable(true);
+					nextpage.setClickable(true);
 					outputStream = socket.getOutputStream();
 					fromClient = new ObjectOutputStream(
 							socket.getOutputStream());
