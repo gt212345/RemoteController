@@ -21,7 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class WelcomeActivity extends Activity {
+public class MainActivity extends Activity {
 	private static EditText showtext;
 	private static Button connect, clear, play, stop, prevpage, nextpage;
 	private ObjectInputStream fromServer;
@@ -37,7 +37,7 @@ public class WelcomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_welcome);
+		setContentView(R.layout.activity_main);
 		showtext = (EditText) findViewById(R.id.showtext);
 		connect = (Button) findViewById(R.id.connect);
 		connect.setOnClickListener(btnOnclickListener);
@@ -124,12 +124,12 @@ public class WelcomeActivity extends Activity {
 		@Override
 		public void run() {
 			final String IP = showtext.getText().toString();
-			WelcomeActivity.this.runOnUiThread(new Runnable() {
+			MainActivity.this.runOnUiThread(new Runnable() {
 
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					Toast.makeText(WelcomeActivity.this,
+					Toast.makeText(MainActivity.this,
 							IP + "       Connecting......", Toast.LENGTH_SHORT)
 							.show();
 				}
@@ -138,12 +138,12 @@ public class WelcomeActivity extends Activity {
 				if (showtext.getText() != null) {
 					int serverPort = 1025;
 					socket = new Socket(IP, serverPort);
-					WelcomeActivity.this.runOnUiThread(new Runnable() {
+					MainActivity.this.runOnUiThread(new Runnable() {
 
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
-							Toast.makeText(WelcomeActivity.this, "Connected",
+							Toast.makeText(MainActivity.this, "Connected",
 									Toast.LENGTH_SHORT).show();
 						}
 					});
@@ -155,12 +155,12 @@ public class WelcomeActivity extends Activity {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				WelcomeActivity.this.runOnUiThread(new Runnable() {
+				MainActivity.this.runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-						Toast.makeText(WelcomeActivity.this,
+						Toast.makeText(MainActivity.this,
 								"Client: Server Not Found", Toast.LENGTH_SHORT)
 								.show();
 					}
