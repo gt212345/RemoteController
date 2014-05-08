@@ -97,9 +97,9 @@ public class WelcomeActivity extends Activity {
 		public CharSequence getPageTitle(int position) {
 			switch (position) {
 			case 0:
-				return new String("Step 1");
+				return null;
 			case 1:
-				return new String("Step 2");
+				return new String("Step 1");
 //			case 2:
 //				return new String("Step 3");
 			}
