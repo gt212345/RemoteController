@@ -1,5 +1,5 @@
 RemoteController
 ================
-Android simple remote controller\n
-working out welcome swipe-allowed fragment pages\n
+Android simple remote controller\<br /\>
+working out welcome swipe-allowed fragment pages\<br /\>
 5/9 By gt212345
