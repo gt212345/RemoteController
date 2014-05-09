@@ -6,21 +6,24 @@
     tools:context="com.example.remotecontroller.SecondFragment$PlaceholderFragment" >
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Second"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="請確認您欲操控之個人電腦\n與操控手機於同個區域網路下"
-        android:textStyle="italic|bold" />
+        android:text="請先開啟Wifi\n並確認您欲操控之個人電腦\n與操控手機於同一區域網路下"
+        android:textStyle="italic|bold"
+        android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/First"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
+        android:layout_above="@+id/Second"
         android:layout_centerHorizontal="true"
+        android:text="首先"
         android:textSize="30sp"
-        android:text="首先" />
+        android:textStyle="italic"
+        android:visibility="invisible" />
 
 </RelativeLayout>

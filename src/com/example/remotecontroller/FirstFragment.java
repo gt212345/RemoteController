@@ -27,15 +27,8 @@ public class FirstFragment extends Fragment {
 		// AlphaAnimation alphaAnimation
 		welcome.startAnimation(AnimationUtils.loadAnimation(getActivity(),
 				R.anim.animate_welcome));
-
 	}
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-
-	}
 
 	@Override
 	public void onPause() {

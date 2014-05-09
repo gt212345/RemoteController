@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class WelcomeActivity extends Activity {
+	String IP;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -37,7 +38,6 @@ public class WelcomeActivity extends Activity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-
 	}
 
 	@Override
@@ -80,8 +80,11 @@ public class WelcomeActivity extends Activity {
 			case 1:
 				fragment = new SecondFragment();
 				break;
-//			case 2:
-//				break;
+			case 2:
+				fragment = new ThirdFragment();
+				break;
+			case 3:
+				fragment = new FourthFragment();
 			}
 
 			return fragment;
@@ -90,7 +93,7 @@ public class WelcomeActivity extends Activity {
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 2;
+			return 4;
 		}
 
 		@Override
@@ -100,8 +103,10 @@ public class WelcomeActivity extends Activity {
 				return null;
 			case 1:
 				return new String("Step 1");
-//			case 2:
-//				return new String("Step 3");
+			case 2:
+				return new String("Step 2");
+			case 3:
+				return new String("Step 3");
 			}
 			return null;
 		}
