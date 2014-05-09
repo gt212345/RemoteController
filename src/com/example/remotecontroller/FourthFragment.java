@@ -3,6 +3,7 @@ package com.example.remotecontroller;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import android.app.Fragment;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FourthFragment extends Fragment {
+	int serverPort = 1025;
 	TextView tv1, tv2, tv3;
 	EditText ed1;
 	Button bt1;
@@ -59,7 +61,7 @@ public class FourthFragment extends Fragment {
 		tv2 = (TextView) getView().findViewById(R.id.textView2);
 		tv3 = (TextView) getView().findViewById(R.id.textView3);
 		bt1 = (Button) getView().findViewById(R.id.button1);
-		ed1 = (EditText)getActivity().findViewById(R.id.editText1);
+		ed1 = (EditText) getActivity().findViewById(R.id.editText1);
 		handler = new Handler();
 		bt1.setOnClickListener(new View.OnClickListener() {
 
@@ -91,18 +93,18 @@ public class FourthFragment extends Fragment {
 			Toast.makeText(getActivity(), IP + "       Connecting......",
 					Toast.LENGTH_SHORT).show();
 			try {
-//				if (IP != null) {
-					int serverPort = 1025;
-					socket = new Socket(IP, serverPort);
-					isConnected = true;
-					Toast.makeText(getActivity(), "Connected",
-							Toast.LENGTH_SHORT).show();
-					outputStream = socket.getOutputStream();
-					fromClient = new ObjectOutputStream(
-							socket.getOutputStream());
-					// fromServer = new
-					// ObjectInputStream(socket.getInputStream());
-//				}
+				// if (IP != null) {
+				socket = new Socket();
+				InetSocketAddress isa = new InetSocketAddress(IP, serverPort);
+				socket.connect(isa);
+				isConnected = true;
+				Toast.makeText(getActivity(), "Connected", Toast.LENGTH_SHORT)
+						.show();
+				outputStream = socket.getOutputStream();
+				fromClient = new ObjectOutputStream(socket.getOutputStream());
+				// fromServer = new
+				// ObjectInputStream(socket.getInputStream());
+				// }
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

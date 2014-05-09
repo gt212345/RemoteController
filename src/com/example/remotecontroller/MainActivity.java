@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import android.os.Bundle;
@@ -137,7 +138,9 @@ public class MainActivity extends Activity {
 			try {
 				if (showtext.getText() != null) {
 					int serverPort = 1025;
-					socket = new Socket(IP, serverPort);
+					socket = new Socket();
+					InetSocketAddress isa = new InetSocketAddress(IP, serverPort);
+					socket.connect(isa);
 					MainActivity.this.runOnUiThread(new Runnable() {
 
 						@Override
