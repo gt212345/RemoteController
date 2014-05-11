@@ -34,8 +34,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="81dp"
         android:ems="16"
-        android:digits="0123456789."
-        android:visibility="invisible" >
+        android:digits="0123456789." >
 
         <requestFocus />
     </EditText>

@@ -26,15 +26,12 @@ public class ThirdFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
-			ed1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome));
 			tv1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
 					R.anim.animate_welcome));
 			tv2.startAnimation(AnimationUtils.loadAnimation(getActivity(),
 					R.anim.animate_welcome2));
 			tv4.startAnimation(AnimationUtils.loadAnimation(getActivity(),
 					R.anim.animate_welcome3));
-			ed1.setVisibility(View.VISIBLE);
 			tv1.setVisibility(View.VISIBLE);
 			tv2.setVisibility(View.VISIBLE);
 			tv4.setVisibility(View.VISIBLE);

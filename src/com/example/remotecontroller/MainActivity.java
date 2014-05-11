@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.StreamCorruptedException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.os.Vibrator;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -29,21 +32,23 @@ public class MainActivity extends Activity {
 	private OutputStream outputStream;
 	private ObjectOutputStream fromClient;
 	private final static int F5 = 0;
-	private final static int RIGHT = 1;
-	private final static int LEFT = 2;
+	private final static int Forward = 2;
+	private final static int Backward = 1;
 	private final static int ESC = 3;
 	Socket socket;
+	String IP;
 	Vibrator vibrator;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+				.detectDiskReads().detectDiskWrites().detectNetwork()
+				.penaltyLog().build());
+		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+				.detectLeakedSqlLiteObjects().penaltyLog().penaltyDeath()
+				.build());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		showtext = (EditText) findViewById(R.id.showtext);
-		connect = (Button) findViewById(R.id.connect);
-		connect.setOnClickListener(btnOnclickListener);
-		clear = (Button) findViewById(R.id.clear);
-		clear.setOnClickListener(btnOnclickListener);
 		play = (Button) findViewById(R.id.play);
 		play.setOnClickListener(btnOnclickListener);
 		stop = (Button) findViewById(R.id.stop);
@@ -52,122 +57,77 @@ public class MainActivity extends Activity {
 		prevpage.setOnClickListener(btnOnclickListener);
 		nextpage = (Button) findViewById(R.id.nextpage);
 		nextpage.setOnClickListener(btnOnclickListener);
-		vibrator = (Vibrator)getApplication().getSystemService(Service.VIBRATOR_SERVICE);
+		vibrator = (Vibrator) getApplication().getSystemService(
+				Service.VIBRATOR_SERVICE);
+		play.setClickable(true);
+		stop.setClickable(true);
+		prevpage.setClickable(true);
+		nextpage.setClickable(true);
+		Intent intent = getIntent();
+		IP = intent.getStringExtra("IP");
+		try {
+			socket = new Socket(IP, 1025);
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 	}
 
 	OnClickListener btnOnclickListener = new OnClickListener() {
 
 		@Override
 		public void onClick(View view) {
+			try {
+				outputStream = socket.getOutputStream();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			switch (view.getId()) {
-			case R.id.connect:
-				Thread clientthread = new Thread(clientSocket);
-				clientthread.start();
-				try {
-					vibrator.vibrate(100);
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-				}
-				break;
-			case R.id.clear:
-				vibrator.vibrate(100);
-				showtext.setText("");
-				break;
 			case R.id.play:
-				int play = 0;
 				// Choices choice = new Choices(F5);
 				try {
 					vibrator.vibrate(100);
-					outputStream.write(play);
+					outputStream.write(F5);
 					// fromClient.writeObject(choice);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case R.id.stop:
-				int stop = 3;
 				// Choices choice1 = new Choices(ESC);
 				try {
 					vibrator.vibrate(100);
-					outputStream.write(stop);
+					outputStream.write(ESC);
 					// fromClient.writeObject(choice1);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case R.id.prevpage:
-				int prevpage = 1;
 				// Choices choice2 = new Choices(RIGHT);
 				try {
 					vibrator.vibrate(100);
-					outputStream.write(prevpage);
+					outputStream.write(Backward);
 					// fromClient.writeObject(choice2);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case R.id.nextpage:
-				int nextpage = 2;
 				// Choices choice3 = new Choices(LEFT);
 				try {
 					vibrator.vibrate(100);
-					outputStream.write(nextpage);
+					outputStream.write(Forward);
 					// fromClient.writeObject(choice3);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
-			}
-		}
-	};
-
-	Runnable clientSocket = new Runnable() {
-		@Override
-		public void run() {
-			final String IP = showtext.getText().toString();
-			MainActivity.this.runOnUiThread(new Runnable() {
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					Toast.makeText(MainActivity.this,
-							IP + "       Connecting......", Toast.LENGTH_SHORT)
-							.show();
-				}
-			});
-			try {
-				if (showtext.getText() != null) {
-					int serverPort = 1025;
-					socket = new Socket();
-					InetSocketAddress isa = new InetSocketAddress(IP, serverPort);
-					socket.connect(isa);
-					MainActivity.this.runOnUiThread(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							Toast.makeText(MainActivity.this, "Connected",
-									Toast.LENGTH_SHORT).show();
-						}
-					});
-					outputStream = socket.getOutputStream();
-					fromClient = new ObjectOutputStream(
-							socket.getOutputStream());
-					fromServer = new ObjectInputStream(socket.getInputStream());
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				MainActivity.this.runOnUiThread(new Runnable() {
-
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						Toast.makeText(MainActivity.this,
-								"Client: Server Not Found", Toast.LENGTH_SHORT)
-								.show();
-					}
-				});
 			}
 		}
 	};

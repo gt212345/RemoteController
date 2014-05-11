@@ -46,6 +46,9 @@
             android:name="com.example.remotecontroller.FourthFragment"
             android:label="@string/title_activity_fourth_fragment" >
         </activity>
+
+        <service android:name=".SocketConnect" >
+        </service>
     </application>
 
 </manifest>

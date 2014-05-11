@@ -32,8 +32,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="連線"
-        android:textStyle="italic"
-        android:visibility="invisible" />
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/textView3"
@@ -44,6 +43,17 @@
         android:layout_below="@+id/button1"
         android:text="確認完畢請按下連線並等待連線成功"
         android:textStyle="italic"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/intent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="切換至控制頁面"
+        android:textStyle="italic|bold"
         android:visibility="invisible" />
 
 </RelativeLayout>
