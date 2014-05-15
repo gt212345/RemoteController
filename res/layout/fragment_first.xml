@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="歡迎"
-        android:textColor="#FF00FFFF"
+        android:textColor="#FF11FFFF"
         android:textSize="40sp"
         android:textStyle="italic|bold" />
 
