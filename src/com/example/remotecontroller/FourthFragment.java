@@ -119,7 +119,7 @@ public class FourthFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent it = new Intent(getActivity(), MainActivity.class);
-				it.putExtra("IP", IP);
+				it.putExtra("IP", ed1.getText().toString());
 				startActivity(it);
 				Intent socketConnect = new Intent(getActivity(),
 						SocketConnect.class);

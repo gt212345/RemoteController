@@ -17,6 +17,7 @@ import android.app.AlertDialog;
 import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -26,8 +27,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	private static EditText showtext;
-	private static Button connect, clear, play, stop, prevpage, nextpage;
+	private static Button play, stop, prevpage, nextpage;
 	private ObjectInputStream fromServer;
 	private OutputStream outputStream;
 	private ObjectOutputStream fromClient;
@@ -35,18 +35,13 @@ public class MainActivity extends Activity {
 	private final static int Forward = 2;
 	private final static int Backward = 1;
 	private final static int ESC = 3;
+	Thread client;
 	Socket socket;
 	String IP;
 	Vibrator vibrator;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-				.detectDiskReads().detectDiskWrites().detectNetwork()
-				.penaltyLog().build());
-		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-				.detectLeakedSqlLiteObjects().penaltyLog().penaltyDeath()
-				.build());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		play = (Button) findViewById(R.id.play);
@@ -57,36 +52,16 @@ public class MainActivity extends Activity {
 		prevpage.setOnClickListener(btnOnclickListener);
 		nextpage = (Button) findViewById(R.id.nextpage);
 		nextpage.setOnClickListener(btnOnclickListener);
+		client = new Thread(clientSocket);
+		client.start();
 		vibrator = (Vibrator) getApplication().getSystemService(
 				Service.VIBRATOR_SERVICE);
-		play.setClickable(true);
-		stop.setClickable(true);
-		prevpage.setClickable(true);
-		nextpage.setClickable(true);
-		Intent intent = getIntent();
-		IP = intent.getStringExtra("IP");
-		try {
-			socket = new Socket(IP, 1025);
-		} catch (UnknownHostException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
 	}
 
 	OnClickListener btnOnclickListener = new OnClickListener() {
 
 		@Override
 		public void onClick(View view) {
-			try {
-				outputStream = socket.getOutputStream();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 			switch (view.getId()) {
 			case R.id.play:
 				// Choices choice = new Choices(F5);
@@ -131,24 +106,67 @@ public class MainActivity extends Activity {
 			}
 		}
 	};
-
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			int exit = 4;
+	Runnable clientSocket = new Runnable() {
+		@Override
+		public void run() {
+			Intent intent = getIntent();
+			IP = intent.getStringExtra("IP");
 			try {
-				outputStream.write(exit);
-			} catch (IOException e) {
+				if (IP.length() >= 0) {
+					socket = new Socket();
+					InetSocketAddress isa = new InetSocketAddress(IP, 1025);
+					try {
+						socket.connect(isa);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						MainActivity.this.runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								Toast.makeText(MainActivity.this, "Error",
+										Toast.LENGTH_SHORT).show();
+							}
+						});
+					}
+				}
+				play.setClickable(true);
+				stop.setClickable(true);
+				prevpage.setClickable(true);
+				nextpage.setClickable(true);
+				outputStream = socket.getOutputStream();
+				// fromClient = new
+				// ObjectOutputStream(socket.getOutputStream());
+				// fromServer = new ObjectInputStream(socket.getInputStream());
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+	};
+
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("exit app");
 			builder.setMessage("You will exit the app...");
-			// builder.setIcon(R.drawable.stat_sys_warning);
 			builder.setPositiveButton("OK",
 					new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
+							try {
+								int exit = 4;
+								outputStream.write(exit);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							try {
+								socket.close();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 							Intent startMain = new Intent(Intent.ACTION_MAIN);
 							startMain.addCategory(Intent.CATEGORY_HOME);
 							startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
