@@ -1,42 +1,35 @@
 package com.example.remotecontroller;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.net.Socket;
-
-import android.os.Bundle;
-import android.os.Vibrator;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Service;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.view.KeyEvent;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.view.MenuItem;
 
 public class WelcomeActivity extends Activity {
-	private static EditText showtext;
-	private static Button connect, clear, play, stop, prevpage, nextpage;
-	private ObjectInputStream fromServer;
-	private OutputStream outputStream;
-	private ObjectOutputStream fromClient;
-	private final static int F5 = 0;
-	private final static int RIGHT = 1;
-	private final static int LEFT = 2;
-	private final static int ESC = 3;
-	Socket socket;
-	Vibrator vibrator;
+	String IP;
+
+	/**
+	 * The {@link android.support.v4.view.PagerAdapter} that will provide
+	 * fragments for each of the sections. We use a {@link FragmentPagerAdapter}
+	 * derivative, which will keep every loaded fragment in memory. If this
+	 * becomes too memory intensive, it may be best to switch to a
+	 * {@link android.support.v13.app.FragmentStatePagerAdapter}.
+	 */
+	SectionsPagerAdapter mSectionsPagerAdapter;
+
+	/**
+	 * The {@link ViewPager} that will host the section contents.
+	 */
+	ViewPager mViewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+<<<<<<< HEAD
 		setContentView(R.layout.activity_welcome);
 		showtext = (EditText) findViewById(R.id.showtext);
 		connect = (Button) findViewById(R.id.connect);
@@ -56,76 +49,71 @@ public class WelcomeActivity extends Activity {
 		stop.setClickable(false);
 		prevpage.setClickable(false);
 		nextpage.setClickable(false);
+=======
+		setContentView(R.layout.activity_welcome_fragment);
+
+		// Create the adapter that will return a fragment for each of the three
+		// primary sections of the activity.
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+
+		// Set up the ViewPager with the sections adapter.
+		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager.setAdapter(mSectionsPagerAdapter);
 	}
 
-	OnClickListener btnOnclickListener = new OnClickListener() {
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
 
-		@Override
-		public void onClick(View view) {
-			switch (view.getId()) {
-			case R.id.connect:
-				Thread clientthread = new Thread(clientSocket);
-				clientthread.start();
-				try {
-					vibrator.vibrate(100);
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-				}
-				break;
-			case R.id.clear:
-				vibrator.vibrate(100);
-				showtext.setText("");
-				break;
-			case R.id.play:
-				int play = 0;
-				// Choices choice = new Choices(F5);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(play);
-					// fromClient.writeObject(choice);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			case R.id.stop:
-				int stop = 3;
-				// Choices choice1 = new Choices(ESC);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(stop);
-					// fromClient.writeObject(choice1);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			case R.id.prevpage:
-				int prevpage = 1;
-				// Choices choice2 = new Choices(RIGHT);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(prevpage);
-					// fromClient.writeObject(choice2);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			case R.id.nextpage:
-				int nextpage = 2;
-				// Choices choice3 = new Choices(LEFT);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(nextpage);
-					// fromClient.writeObject(choice3);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			}
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.welcome, menu);
+		return true;
+>>>>>>> welcomepage
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
 		}
-	};
+		return super.onOptionsItemSelected(item);
+	}
 
-	Runnable clientSocket = new Runnable() {
+	/**
+	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+	 * one of the sections/tabs/pages.
+	 */
+	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+		public SectionsPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
 		@Override
+		public Fragment getItem(int position) {
+			Fragment fragment = null;
+			switch (position) {
+			case 0:
+				fragment = new FirstFragment();
+				break;
+			case 1:
+				fragment = new SecondFragment();
+				break;
+			case 2:
+				fragment = new ThirdFragment();
+				break;
+			case 3:
+				fragment = new FourthFragment();
+			}
+
+			return fragment;
+		}
+
+		@Override
+<<<<<<< HEAD
 		public void run() {
 			final String IP = showtext.getText().toString();
 			WelcomeActivity.this.runOnUiThread(new Runnable() {
@@ -174,51 +162,27 @@ public class WelcomeActivity extends Activity {
 					}
 				});
 			}
+=======
+		public int getCount() {
+			// Show 3 total pages.
+			return 4;
+>>>>>>> welcomepage
 		}
-	};
 
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			int exit = 4;
-			try {
-				outputStream.write(exit);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		@Override
+		public CharSequence getPageTitle(int position) {
+			switch (position) {
+			case 0:
+				return null;
+			case 1:
+				return new String("Step 1");
+			case 2:
+				return new String("Step 2");
+			case 3:
+				return new String("Step 3");
 			}
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("exit app");
-			builder.setMessage("You will exit the app...");
-			// builder.setIcon(R.drawable.stat_sys_warning);
-			builder.setPositiveButton("OK",
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							Intent startMain = new Intent(Intent.ACTION_MAIN);
-							startMain.addCategory(Intent.CATEGORY_HOME);
-							startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							startActivity(startMain);
-							System.exit(0);
-						}
-					});
-			builder.setNegativeButton("Cancel",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-
-						}
-					});
-			builder.show();
+			return null;
 		}
-		return super.onKeyDown(keyCode, event);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.welcome, menu);
-		return true;
 	}
 
 }

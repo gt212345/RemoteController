@@ -3,28 +3,52 @@
     package="com.example.remotecontroller"
     android:versionCode="1"
     android:versionName="1.0" >
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-	<uses-permission android:name="android.permission.VIBRATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="18" />
-    
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="RemoteController"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.remotecontroller.WelcomeActivity"
+            android:name="com.example.remotecontroller.MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.remotecontroller.WelcomeActivity"
+            android:label="@string/title_activity_welcome_fragment" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.remotecontroller.FirstFragment"
+            android:label="@string/title_activity_first_fragment" >
+        </activity>
+        <activity
+            android:name="com.example.remotecontroller.SecondFragment"
+            android:label="@string/title_activity_second_fragment" >
+        </activity>
+        <activity
+            android:name="com.example.remotecontroller.ThirdFragment"
+            android:label="@string/title_activity_third_fragment" >
+        </activity>
+        <activity
+            android:name="com.example.remotecontroller.FourthFragment"
+            android:label="@string/title_activity_fourth_fragment" >
+        </activity>
+
+        <service android:name=".SocketConnect" >
+        </service>
     </application>
 
 </manifest>

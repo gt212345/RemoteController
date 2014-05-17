@@ -11,44 +11,13 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Android Wifi Remote Controller"
-        android:textColor="#ff0486ff"
-        android:textSize="20sp" />
-
-    <ToggleButton
-        android:id="@+id/togglewifi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textOff="Wifi Off"
-        android:textOn="Wifi On" />
-
-    <EditText
-        android:id="@+id/showtext"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="welcome to wifi remote controller"
-        android:textSize="15sp" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/connect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Connect" />
-
-        <Button
-            android:id="@+id/clear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Clear" />
-    </LinearLayout>
+        android:text="PowerPoint Control Mode"
+        android:gravity="center"
+        android:textColor="#ff0486ff"
+        android:textSize="25sp"
+        android:textStyle="italic" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -59,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:clickable="false"
             android:text="Play" />
 
         <Button
@@ -66,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:clickable="false"
             android:text="Stop" />
     </LinearLayout>
 
@@ -78,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:clickable="false"
             android:text="Prev Page" />
 
         <Button
@@ -85,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:clickable="false"
             android:text="Next Page" />
     </LinearLayout>
 
