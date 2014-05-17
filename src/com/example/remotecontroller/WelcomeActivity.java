@@ -29,27 +29,6 @@ public class WelcomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-<<<<<<< HEAD
-		setContentView(R.layout.activity_welcome);
-		showtext = (EditText) findViewById(R.id.showtext);
-		connect = (Button) findViewById(R.id.connect);
-		connect.setOnClickListener(btnOnclickListener);
-		clear = (Button) findViewById(R.id.clear);
-		clear.setOnClickListener(btnOnclickListener);
-		play = (Button) findViewById(R.id.play);
-		play.setOnClickListener(btnOnclickListener);
-		stop = (Button) findViewById(R.id.stop);
-		stop.setOnClickListener(btnOnclickListener);
-		prevpage = (Button) findViewById(R.id.prevpage);
-		prevpage.setOnClickListener(btnOnclickListener);
-		nextpage = (Button) findViewById(R.id.nextpage);
-		nextpage.setOnClickListener(btnOnclickListener);
-		vibrator = (Vibrator)getApplication().getSystemService(Service.VIBRATOR_SERVICE);
-		play.setClickable(false);
-		stop.setClickable(false);
-		prevpage.setClickable(false);
-		nextpage.setClickable(false);
-=======
 		setContentView(R.layout.activity_welcome_fragment);
 
 		// Create the adapter that will return a fragment for each of the three
@@ -67,7 +46,6 @@ public class WelcomeActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.welcome, menu);
 		return true;
->>>>>>> welcomepage
 	}
 
 	@Override
@@ -112,61 +90,9 @@ public class WelcomeActivity extends Activity {
 			return fragment;
 		}
 
-		@Override
-<<<<<<< HEAD
-		public void run() {
-			final String IP = showtext.getText().toString();
-			WelcomeActivity.this.runOnUiThread(new Runnable() {
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					Toast.makeText(WelcomeActivity.this,
-							IP + "       Connecting......", Toast.LENGTH_SHORT)
-							.show();
-				}
-			});
-			try {
-				if (showtext.getText() != null) {
-					int serverPort = 1025;
-					socket = new Socket(IP, serverPort);
-					WelcomeActivity.this.runOnUiThread(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							Toast.makeText(WelcomeActivity.this, "Connected",
-									Toast.LENGTH_SHORT).show();
-						}
-					});
-					play.setClickable(true);
-					stop.setClickable(true);
-					prevpage.setClickable(true);
-					nextpage.setClickable(true);
-					outputStream = socket.getOutputStream();
-					fromClient = new ObjectOutputStream(
-							socket.getOutputStream());
-					fromServer = new ObjectInputStream(socket.getInputStream());
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				WelcomeActivity.this.runOnUiThread(new Runnable() {
-
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						Toast.makeText(WelcomeActivity.this,
-								"Client: Server Not Found", Toast.LENGTH_SHORT)
-								.show();
-					}
-				});
-			}
-=======
 		public int getCount() {
 			// Show 3 total pages.
 			return 4;
->>>>>>> welcomepage
 		}
 
 		@Override
