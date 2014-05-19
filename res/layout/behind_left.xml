@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="fill_parent"
+    android:background="@drawable/rightbg" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/PPT"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:text="PowerPoint控制頁面"
+            android:textColor="#FF000000"
+            android:textSize="20dp"
+            android:textStyle="italic|bold" />
+
+        <TextView
+            android:id="@+id/Mouse"
+            android:layout_width="179dp"
+            android:layout_height="33dp"
+            android:text="滑鼠控制頁面"
+            android:textColor="#FF000000"
+            android:textSize="20dp"
+            android:textStyle="italic|bold" />
+    </LinearLayout>
+
+</ScrollView>

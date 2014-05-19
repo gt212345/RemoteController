@@ -9,9 +9,12 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import com.navdrawer.SimpleSideDrawer;
+
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.os.Vibrator;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Service;
@@ -20,6 +23,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -35,6 +39,7 @@ public class MainActivity extends Activity {
 	private final static int Forward = 2;
 	private final static int Backward = 1;
 	private final static int ESC = 3;
+	SimpleSideDrawer mSlidingMenu;
 	Thread client;
 	Socket socket;
 	String IP;
@@ -52,10 +57,21 @@ public class MainActivity extends Activity {
 		prevpage.setOnClickListener(btnOnclickListener);
 		nextpage = (Button) findViewById(R.id.nextpage);
 		nextpage.setOnClickListener(btnOnclickListener);
+		mSlidingMenu = new SimpleSideDrawer(this);
+		mSlidingMenu.setLeftBehindContentView(R.layout.behind_left);
+		ActionBar actionBar = this.getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 		client = new Thread(clientSocket);
 		client.start();
 		vibrator = (Vibrator) getApplication().getSystemService(
 				Service.VIBRATOR_SERVICE);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		mSlidingMenu.toggleLeftDrawer();
+		return super.onOptionsItemSelected(item);
 	}
 
 	OnClickListener btnOnclickListener = new OnClickListener() {
