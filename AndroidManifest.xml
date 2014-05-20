@@ -54,6 +54,10 @@
             android:name="com.example.remotecontroller.MouseControllActivity"
             android:label="@string/title_activity_mouse_controll" >
         </activity>
+        <activity
+            android:name="com.example.remotecontroller.ControllFragment"
+            android:label="@string/title_activity_controll_fragment" >
+        </activity>
     </application>
 
 </manifest>
