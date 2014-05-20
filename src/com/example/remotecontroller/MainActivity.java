@@ -28,10 +28,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private static Button play, stop, prevpage, nextpage;
+	private TextView ppt, mouse;
 	private ObjectInputStream fromServer;
 	private OutputStream outputStream;
 	private ObjectOutputStream fromClient;
@@ -49,6 +51,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ppt = (TextView) findViewById(R.id.PPT);
+		mouse = (TextView) findViewById(R.id.Mouse);
 		play = (Button) findViewById(R.id.play);
 		play.setOnClickListener(btnOnclickListener);
 		stop = (Button) findViewById(R.id.stop);
@@ -59,6 +63,8 @@ public class MainActivity extends Activity {
 		nextpage.setOnClickListener(btnOnclickListener);
 		mSlidingMenu = new SimpleSideDrawer(this);
 		mSlidingMenu.setLeftBehindContentView(R.layout.behind_left);
+//		ppt.setOnClickListener(txvOnclickListener);
+//		mouse.setOnClickListener(txvOnclickListener);
 		ActionBar actionBar = this.getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		client = new Thread(clientSocket);
@@ -74,6 +80,18 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	OnClickListener txvOnclickListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			switch (v.getId()) {
+			case R.id.PPT:
+				break;
+			}
+
+		}
+	};
 	OnClickListener btnOnclickListener = new OnClickListener() {
 
 		@Override

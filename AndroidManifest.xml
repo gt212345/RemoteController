@@ -47,8 +47,13 @@
             android:label="@string/title_activity_fourth_fragment" >
         </activity>
 
-        <service android:name=".SocketConnect" >
+        <service android:name="com.example.remotecontroller.SocketConnect" >
         </service>
+
+        <activity
+            android:name="com.example.remotecontroller.ControllFragment"
+            android:label="@string/title_activity_controll_fragment" >
+        </activity>
     </application>
 
 </manifest>

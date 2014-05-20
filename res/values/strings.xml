@@ -13,5 +13,9 @@
     <string name="title_activity_second_fragment">SecondFragment</string>
     <string name="title_activity_third_fragment">ThirdFragment</string>
     <string name="title_activity_fourth_fragment">FourthFragment</string>
+    <string name="title_activity_controll_fragment">ControllFragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
 
 </resources>

@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class WelcomeActivity extends Activity {
-	String IP;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide

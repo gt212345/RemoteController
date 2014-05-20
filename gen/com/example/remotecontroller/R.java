@@ -29,11 +29,14 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
+        public static final int navigation_drawer_width=0x7f050002;
     }
     public static final class drawable {
-        public static final int frag1=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int rightbg=0x7f020002;
+        public static final int drawer_shadow=0x7f020000;
+        public static final int frag1=0x7f020001;
+        public static final int ic_drawer=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int leftbg=0x7f020004;
     }
     public static final class id {
         public static final int First=0x7f090010;
@@ -67,16 +70,22 @@ public final class R {
         public static final int fragment_third=0x7f030006;
     }
     public static final class menu {
-        public static final int first=0x7f080000;
-        public static final int fourth=0x7f080001;
-        public static final int second=0x7f080002;
-        public static final int third=0x7f080003;
-        public static final int welcome=0x7f080004;
+        public static final int controll=0x7f080000;
+        public static final int first=0x7f080001;
+        public static final int fourth=0x7f080002;
+        public static final int global=0x7f080003;
+        public static final int second=0x7f080004;
+        public static final int third=0x7f080005;
+        public static final int welcome=0x7f080006;
     }
     public static final class string {
+        public static final int action_example=0x7f06000f;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
+        public static final int navigation_drawer_close=0x7f06000e;
+        public static final int navigation_drawer_open=0x7f06000d;
+        public static final int title_activity_controll_fragment=0x7f06000c;
         public static final int title_activity_first_fragment=0x7f060008;
         public static final int title_activity_fourth_fragment=0x7f06000b;
         public static final int title_activity_second_fragment=0x7f060009;
