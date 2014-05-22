@@ -19,11 +19,13 @@ public class MainActivity extends Activity {
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private NavDrawerListAdapter adapter;
-
+	PptControlFragment frag;
+	private CharSequence mTitle;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		mTitle = getTitle();
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
@@ -42,7 +44,7 @@ public class MainActivity extends Activity {
 									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
-				getActionBar().setTitle(getTitle());
+				getActionBar().setTitle(mTitle);
 				// calling onPrepareOptionsMenu() to show action bar icons
 				invalidateOptionsMenu();
 			}
@@ -106,22 +108,23 @@ public class MainActivity extends Activity {
 		switch (position) {
 		case 0:
 			fragment = new PptControlFragment();
+			mTitle="PPT Control";
 			break;
-//		case 1:
-//			fragment = new FindPeopleFragment();
-//			break;
-//		case 2:
-//			fragment = new PhotosFragment();
-//			break;
-//		case 3:
-//			fragment = new CommunityFragment();
-//			break;
-//		case 4:
-//			fragment = new PagesFragment();
-//			break;
-//		case 5:
-//			fragment = new WhatsHotFragment();
-//			break;
+		// case 1:
+		// fragment = new FindPeopleFragment();
+		// break;
+		// case 2:
+		// fragment = new PhotosFragment();
+		// break;
+		// case 3:
+		// fragment = new CommunityFragment();
+		// break;
+		// case 4:
+		// fragment = new PagesFragment();
+		// break;
+		// case 5:
+		// fragment = new WhatsHotFragment();
+		// break;
 
 		default:
 			break;
@@ -144,13 +147,22 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		FragmentManager fragmentManager = getFragmentManager();
 		// TODO Auto-generated method stub
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			PptControlFragment fragment = (PptControlFragment) getFragmentManager()
-					.findFragmentById(R.id.pptfragment);
+			fragmentManager.beginTransaction()
+					.add(new PptControlFragment(), "pptfrag").commit();
+			PptControlFragment fragment = (PptControlFragment) fragmentManager
+					.findFragmentByTag("pptfrag");
 			fragment.myOnKeyDown(keyCode);
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	public void setTitle(CharSequence title) {
+		mTitle = title;
+		getActionBar().setTitle(mTitle);
 	}
 
 }

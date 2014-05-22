@@ -12,7 +12,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
 	// private LayoutInflater myInflater;
 	Context context;
 	static final String[] controlFragments = new String[] { "PowerPoint北",
-			"Mouse北" };
+			"Mouse北","贾挤北" };
 
 	public NavDrawerListAdapter(Context ctxt) {
 		this.context = ctxt;
