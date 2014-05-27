@@ -1,17 +1,15 @@
 package com.example.remotecontroller;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 public class FirstFragment extends Fragment {
-	TextView welcome;
+	ImageView image1;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,9 +21,9 @@ public class FirstFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-		welcome = (TextView) getView().findViewById(R.id.welcome);
+		image1 = (ImageView) getView().findViewById(R.id.image1);
 		// AlphaAnimation alphaAnimation
-		welcome.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+		image1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
 				R.anim.animate_welcome));
 	}
 
