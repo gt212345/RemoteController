@@ -1,12 +1,6 @@
 package com.example.remotecontroller;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
-
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -31,8 +25,6 @@ public class FourthFragment extends Fragment {
 	EditText ed1;
 	Button bt1, intent;
 	Vibrator vibrator;
-	private OutputStream outputStream;
-	private ObjectOutputStream fromClient;
 	Handler handler;
 	public String IP;
 	Socket socket;

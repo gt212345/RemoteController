@@ -1,231 +1,157 @@
 package com.example.remotecontroller;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.StreamCorruptedException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
-import com.navdrawer.SimpleSideDrawer;
-
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.os.Vibrator;
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Service;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.res.Configuration;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
-	private static Button play, stop, prevpage, nextpage;
-	private TextView ppt, mouse;
-	private ObjectInputStream fromServer;
-	private OutputStream outputStream;
-	private ObjectOutputStream fromClient;
-	private final static int F5 = 0;
-	private final static int Forward = 2;
-	private final static int Backward = 1;
-	private final static int ESC = 3;
-	SimpleSideDrawer mSlidingMenu;
-	Thread client;
-	Socket socket;
-	String IP;
-	Vibrator vibrator;
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
+	private NavDrawerListAdapter adapter;
+	PptControlFragment frag;
+	private CharSequence mTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		ppt = (TextView) findViewById(R.id.PPT);
-		mouse = (TextView) findViewById(R.id.Mouse);
-		play = (Button) findViewById(R.id.play);
-		play.setOnClickListener(btnOnclickListener);
-		stop = (Button) findViewById(R.id.stop);
-		stop.setOnClickListener(btnOnclickListener);
-		prevpage = (Button) findViewById(R.id.prevpage);
-		prevpage.setOnClickListener(btnOnclickListener);
-		nextpage = (Button) findViewById(R.id.nextpage);
-		nextpage.setOnClickListener(btnOnclickListener);
-		mSlidingMenu = new SimpleSideDrawer(this);
-		mSlidingMenu.setLeftBehindContentView(R.layout.behind_left);
-//		ppt.setOnClickListener(txvOnclickListener);
-//		mouse.setOnClickListener(txvOnclickListener);
-		ActionBar actionBar = this.getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		client = new Thread(clientSocket);
-		client.start();
-		vibrator = (Vibrator) getApplication().getSystemService(
-				Service.VIBRATOR_SERVICE);
+		mTitle = getTitle();
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+		adapter = new NavDrawerListAdapter(getApplicationContext());
+		mDrawerList.setAdapter(adapter);
+
+		// enabling action bar app icon and behaving it as toggle button
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+				R.drawable.ic_drawer, // nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for
+									// accessibility
+				R.string.app_name // nav drawer close - description for
+									// accessibility
+		) {
+			public void onDrawerClosed(View view) {
+				getActionBar().setTitle(mTitle);
+				// calling onPrepareOptionsMenu() to show action bar icons
+				invalidateOptionsMenu();
+			}
+
+			public void onDrawerOpened(View drawerView) {
+				getActionBar().setTitle("±±¨î¿ï³æ");
+				// calling onPrepareOptionsMenu() to hide action bar icons
+				invalidateOptionsMenu();
+			}
+		};
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		mSlidingMenu.toggleLeftDrawer();
-		return super.onOptionsItemSelected(item);
+		// toggle nav drawer on selecting action bar app icon/title
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		// Handle action bar actions click
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
-	OnClickListener txvOnclickListener = new OnClickListener() {
+	/**
+	 * When using the ActionBarDrawerToggle, you must call it during
+	 * onPostCreate() and onConfigurationChanged()...
+	 */
 
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		// Pass any configuration change to the drawer toggls
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	private class SlideMenuClickListener implements
+			ListView.OnItemClickListener {
 		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			switch (v.getId()) {
-			case R.id.PPT:
-				break;
-			}
-
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			// display view for selected nav drawer item
+			displayView(position);
 		}
-	};
-	OnClickListener btnOnclickListener = new OnClickListener() {
+	}
 
-		@Override
-		public void onClick(View view) {
-			switch (view.getId()) {
-			case R.id.play:
-				// Choices choice = new Choices(F5);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(F5);
-					// fromClient.writeObject(choice);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			case R.id.stop:
-				// Choices choice1 = new Choices(ESC);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(ESC);
-					// fromClient.writeObject(choice1);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			case R.id.prevpage:
-				// Choices choice2 = new Choices(RIGHT);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(Backward);
-					// fromClient.writeObject(choice2);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			case R.id.nextpage:
-				// Choices choice3 = new Choices(LEFT);
-				try {
-					vibrator.vibrate(100);
-					outputStream.write(Forward);
-					// fromClient.writeObject(choice3);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			}
+	private void displayView(int position) {
+		// update the main content by replacing fragments
+		Fragment fragment = null;
+		switch (position) {
+		case 0:
+			fragment = new PptControlFragment();
+			mTitle="PPT Control";
+			break;
+		case 1:
+			fragment = new MousContFragment();
+			mTitle = "Mouse Control";
+			break;
+		default:
+			break;
 		}
-	};
-	Runnable clientSocket = new Runnable() {
-		@Override
-		public void run() {
-			Intent intent = getIntent();
-			IP = intent.getStringExtra("IP");
-			try {
-				if (IP.length() >= 0) {
-					socket = new Socket();
-					InetSocketAddress isa = new InetSocketAddress(IP, 1025);
-					try {
-						socket.connect(isa);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						MainActivity.this.runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								// TODO Auto-generated method stub
-								Toast.makeText(MainActivity.this, "Error",
-										Toast.LENGTH_SHORT).show();
-							}
-						});
-					}
-				}
-				play.setClickable(true);
-				stop.setClickable(true);
-				prevpage.setClickable(true);
-				nextpage.setClickable(true);
-				outputStream = socket.getOutputStream();
-				// fromClient = new
-				// ObjectOutputStream(socket.getOutputStream());
-				// fromServer = new ObjectInputStream(socket.getInputStream());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	};
 
+		if (fragment != null) {
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, fragment).commit();
+
+			// update selected item and title, then close the drawer
+			mDrawerList.setItemChecked(position, true);
+			mDrawerList.setSelection(position);
+			mDrawerLayout.closeDrawer(mDrawerList);
+		} else {
+			// error in creating fragment
+			Log.e("MainActivity", "Error in creating fragment");
+		}
+	}
+
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		FragmentManager fragmentManager = getFragmentManager();
+		// TODO Auto-generated method stub
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("exit app");
-			builder.setMessage("You will exit the app...");
-			builder.setPositiveButton("OK",
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							try {
-								int exit = 4;
-								outputStream.write(exit);
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							try {
-								socket.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							Intent startMain = new Intent(Intent.ACTION_MAIN);
-							startMain.addCategory(Intent.CATEGORY_HOME);
-							startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							startActivity(startMain);
-							System.exit(0);
-						}
-					});
-			builder.setNegativeButton("Cancel",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-
-						}
-					});
-			builder.show();
+			fragmentManager.beginTransaction()
+					.add(new PptControlFragment(), "pptfrag").commit();
+			PptControlFragment fragment = (PptControlFragment) fragmentManager
+					.findFragmentByTag("pptfrag");
+			fragment.myOnKeyDown(keyCode);
 		}
 		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.welcome, menu);
-		return true;
+	public void setTitle(CharSequence title) {
+		mTitle = title;
+		getActionBar().setTitle(mTitle);
 	}
 
 }
