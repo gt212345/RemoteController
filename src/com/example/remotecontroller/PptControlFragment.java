@@ -62,6 +62,22 @@ public class PptControlFragment extends Fragment {
 				Service.VIBRATOR_SERVICE);
 	}
 
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		// TODO Auto-generated method stub
+		super.setUserVisibleHint(isVisibleToUser);
+		if (isVisibleToUser == false) {
+			try {
+				outputStream.write(4);
+				socket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+
 	OnClickListener btnOnclickListener = new OnClickListener() {
 
 		@Override
@@ -139,6 +155,7 @@ public class PptControlFragment extends Fragment {
 				prevpage.setClickable(true);
 				nextpage.setClickable(true);
 				outputStream = socket.getOutputStream();
+				outputStream.write(6);
 				// fromClient = new
 				// ObjectOutputStream(socket.getOutputStream());
 				// fromServer = new ObjectInputStream(socket.getInputStream());

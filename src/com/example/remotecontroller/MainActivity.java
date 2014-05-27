@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 	private NavDrawerListAdapter adapter;
 	PptControlFragment frag;
 	private CharSequence mTitle;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -110,22 +111,10 @@ public class MainActivity extends Activity {
 			fragment = new PptControlFragment();
 			mTitle="PPT Control";
 			break;
-		// case 1:
-		// fragment = new FindPeopleFragment();
-		// break;
-		// case 2:
-		// fragment = new PhotosFragment();
-		// break;
-		// case 3:
-		// fragment = new CommunityFragment();
-		// break;
-		// case 4:
-		// fragment = new PagesFragment();
-		// break;
-		// case 5:
-		// fragment = new WhatsHotFragment();
-		// break;
-
+		case 1:
+			fragment = new MousContFragment();
+			mTitle = "Mouse Control";
+			break;
 		default:
 			break;
 		}
