@@ -1,21 +1,21 @@
 package com.example.remotecontroller;
 
-import android.animation.Animator;
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.os.Build;
 
 public class SecondFragment extends Fragment {
-	TextView first, second;
+	ImageView image2;
+	Button bt1;
+	TextView second;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,7 +33,6 @@ public class SecondFragment extends Fragment {
 	@Override
 	public void onPause() {
 		// TODO Auto-generated method stub
-		first.setVisibility(View.INVISIBLE);
 		second.setVisibility(View.INVISIBLE);
 		super.onPause();
 	}
@@ -43,11 +42,8 @@ public class SecondFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
-			first.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome));
 			second.startAnimation(AnimationUtils.loadAnimation(getActivity(),
 					R.anim.animate_welcome2));
-			first.setVisibility(View.VISIBLE);
 			second.setVisibility(View.VISIBLE);
 		}
 	}
@@ -55,7 +51,14 @@ public class SecondFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-		first = (TextView) getView().findViewById(R.id.First);
+		image2 = (ImageView) getView().findViewById(R.id.image2);
+		bt1 = (Button) getView().findViewById(R.id.bt1);
 		second = (TextView) getView().findViewById(R.id.Second);
+	}
+	
+	public void wifiopen(){
+		Intent it = 
+				new Intent(Settings.ACTION_WIFI_SETTINGS);
+		startActivity(it);
 	}
 }
