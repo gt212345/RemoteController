@@ -32,4 +32,7 @@ and you'll need a server
 
 I'm still working on the side sliding menu which allow user to switch between different fuction, quit a hard work for me, as i'm messing aroud with fragments.
 
+now at version 1.0
+	complete PPT function and welcome fragment.
+
 
