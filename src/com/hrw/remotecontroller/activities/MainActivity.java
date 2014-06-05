@@ -145,9 +145,9 @@ public class MainActivity extends Activity {
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 			fragmentManager.beginTransaction()
 					.add(new PptControlFragment(), "pptfrag").commit();
-			PptControlFragment fragment = (PptControlFragment) fragmentManager
+			Fragment fragment = fragmentManager
 					.findFragmentByTag("pptfrag");
-			fragment.myOnKeyDown(keyCode);
+//			fragment.myOnKeyDown(keyCode);
 		}
 		return super.onKeyDown(keyCode, event);
 	}

@@ -46,6 +46,18 @@ public class PptControlFragment extends Fragment {
 	}
 
 	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		try {
+			outputStream.write(4);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);

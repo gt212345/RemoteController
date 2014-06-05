@@ -1,13 +1,10 @@
 package com.hrw.remotecontroller.fragments;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-
-import com.example.remotecontroller.R;
 
 import android.app.Fragment;
 import android.app.Service;
@@ -21,10 +18,62 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.remotecontroller.R;
+
 public class MousContFragment extends Fragment {
+
+	@Override
+	public void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		Log.w("onStart", "Called");
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.w("onResume", "Called");
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		Log.w("onPause", "Called");
+		try {
+			oos.writeObject(new int[] { (int) 4, (int) 0 });
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Log.w("onStop", "Called");
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		Log.w("onDestroy", "Called");
+	}
+
+	@Override
+	public void onDetach() {
+		// TODO Auto-generated method stub
+		super.onDetach();
+		Log.w("onDetach", "Called");
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		setHasOptionsMenu(true);
 		super.onCreate(savedInstanceState);
 	}
 
@@ -36,10 +85,6 @@ public class MousContFragment extends Fragment {
 	boolean isConnected = false;
 	private float originX;
 	private float originY;
-	private float moveX;
-	private float moveY;
-	private float mSolidX;
-	private float mSolidY;
 	int[] coordinate;
 
 	@Override
@@ -102,7 +147,6 @@ public class MousContFragment extends Fragment {
 			if (isConnected) {
 				break;
 			}
-
 		}
 	}
 
