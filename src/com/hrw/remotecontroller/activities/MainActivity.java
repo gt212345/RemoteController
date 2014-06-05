@@ -1,4 +1,8 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.activities;
+
+import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.fragments.MousContFragment;
+import com.hrw.remotecontroller.fragments.PptControlFragment;
 
 import android.os.Bundle;
 import android.app.Activity;

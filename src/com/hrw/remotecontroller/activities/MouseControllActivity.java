@@ -1,4 +1,4 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.activities;
 
 import android.app.Activity;
 

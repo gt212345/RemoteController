@@ -1,4 +1,4 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.fragments;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -6,6 +6,9 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+
+import com.example.remotecontroller.R;
+
 import android.app.Fragment;
 import android.app.Service;
 import android.content.Intent;
