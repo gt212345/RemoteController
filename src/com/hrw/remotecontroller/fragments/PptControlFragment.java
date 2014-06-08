@@ -1,10 +1,11 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.fragments;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+import com.example.remotecontroller.R;
 import com.navdrawer.SimpleSideDrawer;
 
 import android.app.AlertDialog;
@@ -42,6 +43,18 @@ public class PptControlFragment extends Fragment {
 				container, false);
 
 		return rootView;
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		try {
+			outputStream.write(4);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

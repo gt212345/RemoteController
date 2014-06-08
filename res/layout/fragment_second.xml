@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/frag1"
-    tools:context="com.example.remotecontroller.SecondFragment$PlaceholderFragment" >
+    tools:context="com.hrw.remotecontroller.activities.SecondFragment$PlaceholderFragment" >
 
     <TextView
         android:id="@+id/Second"

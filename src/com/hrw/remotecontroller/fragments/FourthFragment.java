@@ -1,6 +1,11 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.fragments;
 
 import java.net.Socket;
+
+import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.activities.MainActivity;
+import com.hrw.remotecontroller.service.SocketConnect;
+
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;

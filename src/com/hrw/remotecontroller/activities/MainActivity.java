@@ -1,4 +1,8 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.activities;
+
+import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.fragments.MousContFragment;
+import com.hrw.remotecontroller.fragments.PptControlFragment;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -141,9 +145,9 @@ public class MainActivity extends Activity {
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 			fragmentManager.beginTransaction()
 					.add(new PptControlFragment(), "pptfrag").commit();
-			PptControlFragment fragment = (PptControlFragment) fragmentManager
+			Fragment fragment = fragmentManager
 					.findFragmentByTag("pptfrag");
-			fragment.myOnKeyDown(keyCode);
+//			fragment.myOnKeyDown(keyCode);
 		}
 		return super.onKeyDown(keyCode, event);
 	}

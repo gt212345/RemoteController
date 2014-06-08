@@ -1,4 +1,10 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.activities;
+
+import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.fragments.FirstFragment;
+import com.hrw.remotecontroller.fragments.FourthFragment;
+import com.hrw.remotecontroller.fragments.SecondFragment;
+import com.hrw.remotecontroller.fragments.ThirdFragment;
 
 import android.app.Activity;
 import android.app.Fragment;
