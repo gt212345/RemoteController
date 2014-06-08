@@ -13,8 +13,8 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PowerPoint Control Mode"
         android:gravity="center"
+        android:text="PowerPoint Control Mode"
         android:textColor="#ff0486ff"
         android:textSize="25sp"
         android:textStyle="italic" />
@@ -59,6 +59,25 @@
             android:layout_weight="0.5"
             android:clickable="false"
             android:text="Next Page" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/paintmode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="paintmode" />
+
+        <Button
+            android:id="@+id/whiteout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="whiteout" />
     </LinearLayout>
 
 </LinearLayout>

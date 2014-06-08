@@ -1,7 +1,6 @@
 package com.hrw.remotecontroller.service;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
@@ -16,7 +15,6 @@ public class SocketConnect extends Service {
 	String IP;
 	Socket socket;
 	Thread socketConnect;
-	int c = 5;
 	private Runnable connect = new Runnable() {
 
 		@Override
@@ -31,8 +29,6 @@ public class SocketConnect extends Service {
 					socket.connect(isa);
 					i.putExtra("isConnected", true);
 					sendBroadcast(i);
-					OutputStream os = socket.getOutputStream();
-					os.write(c);
 					socket.close();
 					Log.w("Service","Socket closed");
 				} catch (IOException e) {

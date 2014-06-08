@@ -23,12 +23,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class PptControlFragment extends Fragment {
-	private static Button play, stop, prevpage, nextpage;
+	private static Button play, stop, prevpage, nextpage, whiteout, paintmode;
 	private OutputStream outputStream;
 	private final static int F5 = 0;
 	private final static int Forward = 2;
 	private final static int Backward = 1;
 	private final static int ESC = 3;
+	private final static int white = 4;
+	private final static int paint = 5;
 	SimpleSideDrawer mSlidingMenu;
 	Thread client;
 	Socket socket;
@@ -50,7 +52,7 @@ public class PptControlFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onPause();
 		try {
-			outputStream.write(4);
+			outputStream.write(7);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,6 +63,10 @@ public class PptControlFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		whiteout = (Button) getView().findViewById(R.id.whiteout);
+		whiteout.setOnClickListener(btnOnclickListener);
+		paintmode = (Button) getView().findViewById(R.id.paintmode);
+		paintmode.setOnClickListener(btnOnclickListener);
 		play = (Button) getView().findViewById(R.id.play);
 		play.setOnClickListener(btnOnclickListener);
 		stop = (Button) getView().findViewById(R.id.stop);
@@ -87,7 +93,7 @@ public class PptControlFragment extends Fragment {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
 
@@ -132,6 +138,22 @@ public class PptControlFragment extends Fragment {
 					vibrator.vibrate(100);
 					outputStream.write(Forward);
 					// fromClient.writeObject(choice3);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			case R.id.whiteout:
+				try {
+					vibrator.vibrate(100);
+					outputStream.write(white);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			case R.id.paintmode:
+				try {
+					vibrator.vibrate(100);
+					outputStream.write(paint);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

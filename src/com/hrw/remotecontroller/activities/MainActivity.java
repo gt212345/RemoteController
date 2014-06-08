@@ -43,9 +43,9 @@ public class MainActivity extends Activity {
 		getActionBar().setHomeButtonEnabled(true);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer,
-				R.string.app_name, // nav drawer open - description for
-									// accessibility
+				R.drawable.ic_drawer, R.string.app_name, // nav drawer open -
+															// description for
+															// accessibility
 				R.string.app_name // nav drawer close - description for
 									// accessibility
 		) {
@@ -62,6 +62,10 @@ public class MainActivity extends Activity {
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		if (savedInstanceState == null) {
+			// on first time display view for first nav item
+			displayView(0);
+		}
 	}
 
 	@Override
@@ -114,7 +118,7 @@ public class MainActivity extends Activity {
 		switch (position) {
 		case 0:
 			fragment = new PptControlFragment();
-			mTitle="PPT Control";
+			mTitle = "PPT Control";
 			break;
 		case 1:
 			fragment = new MousContFragment();
@@ -149,9 +153,8 @@ public class MainActivity extends Activity {
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 			fragmentManager.beginTransaction()
 					.add(new PptControlFragment(), "pptfrag").commit();
-			Fragment fragment = fragmentManager
-					.findFragmentByTag("pptfrag");
-//			fragment.myOnKeyDown(keyCode);
+			Fragment fragment = fragmentManager.findFragmentByTag("pptfrag");
+			// fragment.myOnKeyDown(keyCode);
 		}
 		return super.onKeyDown(keyCode, event);
 	}
