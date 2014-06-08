@@ -12,6 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +23,9 @@ import android.widget.Toast;
 
 import com.example.remotecontroller.R;
 
-public class MousContFragment extends Fragment {
+public class MousContFragment extends Fragment implements OnGestureListener,
+		OnDoubleTapListener {
+	private GestureDetector mGestureDetector;
 
 	@Override
 	public void onStart() {
@@ -42,7 +47,7 @@ public class MousContFragment extends Fragment {
 		super.onPause();
 		Log.w("onPause", "Called");
 		try {
-			oos.writeObject(new int[] { (int) 4, (int) 0 });
+			oos.writeObject(new int[] { (int) 2000, (int) 0 });
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,8 +78,8 @@ public class MousContFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		setHasOptionsMenu(true);
 		super.onCreate(savedInstanceState);
+		mGestureDetector = new GestureDetector(getActivity(), this);
 	}
 
 	ObjectOutputStream oos;
@@ -83,9 +88,7 @@ public class MousContFragment extends Fragment {
 	String IP;
 	Vibrator vibrator;
 	boolean isConnected = false;
-	private float originX;
-	private float originY;
-	int[] coordinate;
+	int[] coordinate = new int[2];
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,38 +101,8 @@ public class MousContFragment extends Fragment {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				try {
-					// when user touches the screen
-					if (event.getAction() == MotionEvent.ACTION_DOWN) {
-						// reset deltaX and deltaY
-						originX = event.getX();
-						originY = event.getY();
-					}
-					if (event.getAction() == MotionEvent.ACTION_MOVE) {
-						// moveX = event.getX() - originX;
-						// moveY = event.getY() - originY;
-						// if (moveX > 10) {
-						// mSolidX = 3;
-						// } else if (moveX < -10) {
-						// mSolidX = -3;
-						// }
-						// if (moveY > 10) {
-						// mSolidY = 3;
-						// } else if (moveY < -10) {
-						// mSolidY = -3;
-						// }
-						originX = event.getX();
-						originY = event.getY();
-						coordinate = new int[] { (int) originX, (int) originY };
-						oos.writeObject(coordinate);
-
-					}
-					return true;
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return true;
+				boolean result = mGestureDetector.onTouchEvent(event);
+				return result;
 			}
 		});
 		return rootView;
@@ -139,6 +112,7 @@ public class MousContFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		getView().setClickable(true);
 		client = new Thread(clientSocket);
 		client.start();
 		vibrator = (Vibrator) getActivity().getApplication().getSystemService(
@@ -187,5 +161,75 @@ public class MousContFragment extends Fragment {
 			}
 		}
 	};
+
+	@Override
+	public boolean onSingleTapConfirmed(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onDoubleTap(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onDoubleTapEvent(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		// coordinate[0] = (int) originX;
+		// coordinate[1] = (int) originY;
+		coordinate[0] = (int) (distanceX + 0.5);
+		Log.w("distanceX", String.valueOf(distanceX));
+		coordinate[1] = (int) (distanceY + 0.5);
+		Log.w("distanceY", String.valueOf(distanceY));
+		Log.w("Coordinate", "X:" + String.valueOf(coordinate[0]) + "Y:"
+				+ String.valueOf(coordinate[1]));
+		try {
+			oos.writeObject(new int[]{(int)(distanceX+0.5),(int)(distanceY+0.5)});
+			Log.w("write", "Sent");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
 }
