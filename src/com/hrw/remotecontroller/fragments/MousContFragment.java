@@ -88,7 +88,6 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	String IP;
 	Vibrator vibrator;
 	boolean isConnected = false;
-	int[] coordinate = new int[2];
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -177,7 +176,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	@Override
 	public boolean onDoubleTapEvent(MotionEvent e) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -189,7 +188,12 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	@Override
 	public void onShowPress(MotionEvent e) {
 		// TODO Auto-generated method stub
-
+		try {
+			oos.writeObject(new int[] { (int) 2001, 0 });
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	@Override
@@ -202,16 +206,11 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
 			float distanceY) {
 		// TODO Auto-generated method stub
-		// coordinate[0] = (int) originX;
-		// coordinate[1] = (int) originY;
-		coordinate[0] = (int) (distanceX + 0.5);
 		Log.w("distanceX", String.valueOf(distanceX));
-		coordinate[1] = (int) (distanceY + 0.5);
 		Log.w("distanceY", String.valueOf(distanceY));
-		Log.w("Coordinate", "X:" + String.valueOf(coordinate[0]) + "Y:"
-				+ String.valueOf(coordinate[1]));
 		try {
-			oos.writeObject(new int[]{(int)(distanceX+0.5),(int)(distanceY+0.5)});
+			oos.writeObject(new int[] { (int) (distanceX + 0.5),
+					(int) (distanceY + 0.5) });
 			Log.w("write", "Sent");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
