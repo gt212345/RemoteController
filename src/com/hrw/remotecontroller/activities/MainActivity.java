@@ -2,7 +2,7 @@ package com.hrw.remotecontroller.activities;
 
 import com.example.remotecontroller.R;
 import com.hrw.remotecontroller.fragments.MousContFragment;
-import com.hrw.remotecontroller.fragments.MusicContFragment;
+import com.hrw.remotecontroller.fragments.YoutubeControl;
 import com.hrw.remotecontroller.fragments.PptControlFragment;
 
 import android.os.Bundle;
@@ -125,7 +125,7 @@ public class MainActivity extends Activity {
 			mTitle = "Mouse Control";
 			break;
 		case 2:
-			fragment = new MusicContFragment();
+			fragment = new YoutubeControl();
 			mTitle = "Music Control";
 		default:
 			break;

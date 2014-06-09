@@ -55,19 +55,35 @@ public final class R {
         public static final int First=0x7f0a0015;
         public static final int Mouse=0x7f0a0006;
         public static final int PPT=0x7f0a0005;
+        public static final int RelativeLayout1=0x7f0a0018;
         public static final int Second=0x7f0a0014;
-        public static final int action_settings=0x7f0a0018;
+        public static final int action_settings=0x7f0a0029;
+        public static final int b0=0x7f0a0024;
+        public static final int b1=0x7f0a0025;
+        public static final int b2=0x7f0a0026;
+        public static final int b3=0x7f0a0027;
+        public static final int b4=0x7f0a0028;
+        public static final int b5=0x7f0a001f;
+        public static final int b6=0x7f0a0020;
+        public static final int b7=0x7f0a0021;
+        public static final int b8=0x7f0a0022;
+        public static final int b9=0x7f0a0023;
+        public static final int back=0x7f0a001a;
         public static final int button1=0x7f0a000b;
+        public static final int down=0x7f0a001d;
         public static final int drawer_layout=0x7f0a0000;
         public static final int editText1=0x7f0a0016;
+        public static final int forward=0x7f0a0019;
         public static final int frame_container=0x7f0a0001;
         public static final int intent=0x7f0a000d;
+        public static final int linearLayout1=0x7f0a001e;
         public static final int list_slidermenu=0x7f0a0002;
         public static final int nextpage=0x7f0a0011;
         public static final int pager=0x7f0a0003;
         public static final int pager_title_strip=0x7f0a0004;
         public static final int paintmode=0x7f0a0012;
         public static final int play=0x7f0a000e;
+        public static final int playpause=0x7f0a001b;
         public static final int prevpage=0x7f0a0010;
         public static final int stop=0x7f0a000f;
         public static final int textView1=0x7f0a0009;
@@ -75,6 +91,7 @@ public final class R {
         public static final int textView3=0x7f0a000c;
         public static final int textView4=0x7f0a0017;
         public static final int title=0x7f0a0007;
+        public static final int up=0x7f0a001c;
         public static final int welcome=0x7f0a0008;
         public static final int whiteout=0x7f0a0013;
     }
@@ -86,10 +103,10 @@ public final class R {
         public static final int fragment_first=0x7f030004;
         public static final int fragment_fourth=0x7f030005;
         public static final int fragment_mouscont=0x7f030006;
-        public static final int fragment_musiccont=0x7f030007;
-        public static final int fragment_pptcontrol=0x7f030008;
-        public static final int fragment_second=0x7f030009;
-        public static final int fragment_third=0x7f03000a;
+        public static final int fragment_pptcontrol=0x7f030007;
+        public static final int fragment_second=0x7f030008;
+        public static final int fragment_third=0x7f030009;
+        public static final int fragment_youtubecontrol=0x7f03000a;
     }
     public static final class menu {
         public static final int controll=0x7f090000;
