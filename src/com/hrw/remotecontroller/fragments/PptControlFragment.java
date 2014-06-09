@@ -20,22 +20,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 public class PptControlFragment extends Fragment {
 	private static Button play, stop, prevpage, nextpage, whiteout, paintmode;
 	private OutputStream outputStream;
-	private final static int F5 = 0;
-	private final static int Forward = 2;
-	private final static int Backward = 1;
-	private final static int ESC = 3;
-	private final static int white = 4;
-	private final static int paint = 5;
+	private final static int F5 = 100;
+	private final static int Forward = 102;
+	private final static int Backward = 101;
+	private final static int ESC = 103;
+	private final static int white = 104;
+	private final static int paint = 105;
 	SimpleSideDrawer mSlidingMenu;
 	Thread client;
 	Socket socket;
 	String IP;
 	Vibrator vibrator;
+	SeekBar scrollpage;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +55,7 @@ public class PptControlFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onPause();
 		try {
-			outputStream.write(7);
+			outputStream.write(107);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,26 +78,48 @@ public class PptControlFragment extends Fragment {
 		prevpage.setOnClickListener(btnOnclickListener);
 		nextpage = (Button) getView().findViewById(R.id.nextpage);
 		nextpage.setOnClickListener(btnOnclickListener);
+		scrollpage = (SeekBar) getView().findViewById(R.id.scrollpage);
+		scrollpage.setMax(44);
+		scrollpage.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				try {
+					outputStream.write(seekBar.getProgress());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				try {
+					outputStream.write(seekBar.getProgress());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				try {
+					outputStream.write(progress);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		client = new Thread(clientSocket);
 		client.start();
 		vibrator = (Vibrator) getActivity().getApplication().getSystemService(
 				Service.VIBRATOR_SERVICE);
-	}
-
-	@Override
-	public void setUserVisibleHint(boolean isVisibleToUser) {
-		// TODO Auto-generated method stub
-		super.setUserVisibleHint(isVisibleToUser);
-		if (isVisibleToUser == false) {
-			try {
-				outputStream.write(4);
-				socket.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
 	}
 
 	OnClickListener btnOnclickListener = new OnClickListener() {
@@ -190,7 +215,7 @@ public class PptControlFragment extends Fragment {
 				prevpage.setClickable(true);
 				nextpage.setClickable(true);
 				outputStream = socket.getOutputStream();
-				outputStream.write(6);
+				outputStream.write(106);
 				// fromClient = new
 				// ObjectOutputStream(socket.getOutputStream());
 				// fromServer = new ObjectInputStream(socket.getInputStream());
