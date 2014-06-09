@@ -80,6 +80,24 @@
             android:text="whiteout" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/pagecount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="請輸入頁數"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/countsend"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="確認" />
+
     <SeekBar
         android:id="@+id/scrollpage"
         android:layout_width="match_parent"

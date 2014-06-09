@@ -19,13 +19,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 public class PptControlFragment extends Fragment {
-	private static Button play, stop, prevpage, nextpage, whiteout, paintmode;
+	private static Button play, stop, prevpage, nextpage, whiteout, paintmode,
+			send;
 	private OutputStream outputStream;
 	private final static int F5 = 100;
 	private final static int Forward = 102;
@@ -39,6 +42,7 @@ public class PptControlFragment extends Fragment {
 	String IP;
 	Vibrator vibrator;
 	SeekBar scrollpage;
+	EditText pagecount;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +70,8 @@ public class PptControlFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		send = (Button) getView().findViewById(R.id.countsend);
+		send.setOnClickListener(btnOnclickListener);
 		whiteout = (Button) getView().findViewById(R.id.whiteout);
 		whiteout.setOnClickListener(btnOnclickListener);
 		paintmode = (Button) getView().findViewById(R.id.paintmode);
@@ -78,8 +84,9 @@ public class PptControlFragment extends Fragment {
 		prevpage.setOnClickListener(btnOnclickListener);
 		nextpage = (Button) getView().findViewById(R.id.nextpage);
 		nextpage.setOnClickListener(btnOnclickListener);
+		pagecount = (EditText) getView().findViewById(R.id.pagecount);
 		scrollpage = (SeekBar) getView().findViewById(R.id.scrollpage);
-		scrollpage.setMax(44);
+		scrollpage.setVisibility(View.INVISIBLE);
 		scrollpage.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
@@ -127,6 +134,14 @@ public class PptControlFragment extends Fragment {
 		@Override
 		public void onClick(View view) {
 			switch (view.getId()) {
+			case R.id.countsend:
+				scrollpage.setMax(Integer.parseInt(pagecount.getText()
+						.toString()));
+				Toast.makeText(getActivity(), "PPTÁ`­p"+scrollpage.getMax()+"­¶", Toast.LENGTH_SHORT).show();
+				scrollpage.setAnimation((AnimationUtils.loadAnimation(
+						getActivity(), R.anim.animate_welcome)));
+				scrollpage.setVisibility(View.VISIBLE);
+				break;
 			case R.id.play:
 				// Choices choice = new Choices(F5);
 				try {
