@@ -1,8 +1,16 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.activities;
+
+import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.fragments.FirstFragment;
+import com.hrw.remotecontroller.fragments.FourthFragment;
+import com.hrw.remotecontroller.fragments.SecondFragment;
+import com.hrw.remotecontroller.fragments.ThirdFragment;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class WelcomeActivity extends Activity {
-	String IP;
+	public SQLiteDatabase db;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -30,7 +38,9 @@ public class WelcomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_welcome_fragment);
-
+		db = openOrCreateDatabase("IPdb", Context.MODE_PRIVATE, null);
+		String sql = "CREATE TABLE IF NOT EXISTS IPs " + "(IP VATCHAR(32))";
+		db.execSQL(sql);
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
@@ -109,6 +119,10 @@ public class WelcomeActivity extends Activity {
 			}
 			return null;
 		}
+	}
+
+	public SQLiteDatabase getDB() {
+		return this.db;
 	}
 
 }

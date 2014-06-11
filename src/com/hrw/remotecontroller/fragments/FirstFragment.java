@@ -1,12 +1,12 @@
-package com.example.remotecontroller;
+package com.hrw.remotecontroller.fragments;
+
+import com.example.remotecontroller.R;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 

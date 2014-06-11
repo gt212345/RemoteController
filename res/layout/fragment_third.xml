@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.remotecontroller.ThirdFragment$PlaceholderFragment" >
+    tools:context="com.hrw.remotecontroller.activities.ThirdFragment$PlaceholderFragment" >
 
     <TextView
         android:id="@+id/textView2"
@@ -71,6 +71,15 @@
         android:textStyle="italic|bold"
         android:textColor="#FFFF555F"
         android:visibility="invisible"
-        android:text="小提示:查詢電腦IP位置可以在CMD下輸入ipconfig\n\t\t\t\t若是使用OSX請在terminal下輸入ipconfig" />
+        android:text="小提示:查詢電腦IP位置可以在CMD下輸入ipconfig\n\t\t\t\t若是使用OSX請在terminal下輸入ifconfig" />
+
+    <Button
+        android:id="@+id/useDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:text="歷史紀錄"
+        android:visibility="invisible" />
 
 </RelativeLayout>
