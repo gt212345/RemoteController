@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ThirdFragment extends Fragment {
+
 	TextView tv1, tv2, tv3, tv4;
 	static EditText ed1;
 	Button bt1, usedb;

@@ -71,6 +71,7 @@ public final class R {
         public static final int back=0x7f0a001c;
         public static final int button1=0x7f0a0009;
         public static final int countsend=0x7f0a0013;
+        public static final int deleteDB=0x7f0a002d;
         public static final int down=0x7f0a001f;
         public static final int drawer_layout=0x7f0a0000;
         public static final int editText1=0x7f0a0017;
