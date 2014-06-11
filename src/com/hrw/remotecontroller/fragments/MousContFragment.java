@@ -9,22 +9,27 @@ import java.net.Socket;
 import android.app.Fragment;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
+import android.view.animation.AnimationUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.remotecontroller.R;
 
 public class MousContFragment extends Fragment implements OnGestureListener,
 		OnDoubleTapListener {
+	PopupWindow mpopupwindow;
 	private GestureDetector mGestureDetector;
 
 	@Override
@@ -123,6 +128,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 				break;
 			}
 		}
+		initPopupwindow();
 	}
 
 	Runnable clientSocket = new Runnable() {
@@ -166,7 +172,13 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	@Override
 	public boolean onSingleTapConfirmed(MotionEvent e) {
 		// TODO Auto-generated method stub
-		return false;
+		try {
+			oos.writeObject(new int[] { (int) 2001, 0 });
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override
@@ -191,7 +203,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	public void onShowPress(MotionEvent e) {
 		// TODO Auto-generated method stub
 		try {
-			oos.writeObject(new int[] { (int) 2001, 0 });
+			oos.writeObject(new int[] { (int) 2002, 0 });
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -201,7 +213,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	@Override
 	public boolean onSingleTapUp(MotionEvent e) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -231,6 +243,19 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 			float velocityY) {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	private void initPopupwindow() {
+		LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+		View popupWindowlayout = layoutInflater
+				.inflate(R.layout.popup_mouseinfo, null);
+		mpopupwindow = new PopupWindow(popupWindowlayout, 400, 120, true);
+		mpopupwindow.setBackgroundDrawable(new BitmapDrawable(getResources(),
+				""));
+		popupWindowlayout.setAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_popupwindow));
+		mpopupwindow.update();
+		mpopupwindow.showAtLocation(getView(), Gravity.CENTER, 0, 0);
 	}
 
 }

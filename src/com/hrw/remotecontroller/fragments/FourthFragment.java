@@ -13,6 +13,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +29,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FourthFragment extends Fragment {
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if(isfirstAnimPlayed){
+			tv2.setVisibility(View.VISIBLE);
+			tv1.setVisibility(View.VISIBLE);
+			tv3.setVisibility(View.VISIBLE);
+			bt1.setVisibility(View.VISIBLE);
+		}
+		if(issecAnimPlayed){
+			intent.setVisibility(View.VISIBLE);
+		}
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		isfirstAnimPlayed = false;
+		issecAnimPlayed = false;
+	}
+
 	boolean isConnected;
 	int serverPort = 1025;
 	TextView tv1, tv2, tv3;
@@ -38,22 +62,28 @@ public class FourthFragment extends Fragment {
 	public String IP;
 	Socket socket;
 	SQLiteDatabase db;
+	boolean isDuplicate = false;
+	boolean issecAnimPlayed;
+	boolean isfirstAnimPlayed;
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
-			tv2.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome));
-			tv1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome2));
-			tv3.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome3));
-			tv2.setVisibility(View.VISIBLE);
-			tv1.setVisibility(View.VISIBLE);
-			tv3.setVisibility(View.VISIBLE);
-			bt1.setVisibility(View.VISIBLE);
+			if (!isfirstAnimPlayed) {
+				tv2.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome));
+				tv1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome2));
+				tv3.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome3));
+				isfirstAnimPlayed = true;
+				tv2.setVisibility(View.VISIBLE);
+				tv1.setVisibility(View.VISIBLE);
+				tv3.setVisibility(View.VISIBLE);
+				bt1.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 
@@ -62,7 +92,7 @@ public class FourthFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		getFragmentManager().findFragmentByTag("tf");
-		db = ((WelcomeActivity)getActivity()).getDB();
+		db = ((WelcomeActivity) getActivity()).getDB();
 		intent = (Button) getView().findViewById(R.id.intent);
 		tv1 = (TextView) getView().findViewById(R.id.textView1);
 		tv2 = (TextView) getView().findViewById(R.id.textView2);
@@ -89,14 +119,29 @@ public class FourthFragment extends Fragment {
 					if (isConnected) {
 						getActivity().runOnUiThread(new Runnable() {
 							public void run() {
-								addIP(ed1.getText().toString());
+								Cursor c = db.rawQuery("SELECT * FROM IPs",
+										null);
+								if (c.moveToFirst()) {
+									do {
+										if (ed1.getText().toString()
+												.equals(c.getString(0))) {
+											isDuplicate = true;
+										}
+									} while (c.moveToNext());
+								}
+								if (!isDuplicate) {
+									addIP(ed1.getText().toString());
+								}
 								Log.w("DB", "IP added");
 								Toast.makeText(getActivity(), "Connected",
 										Toast.LENGTH_SHORT).show();
-								intent.setVisibility(View.VISIBLE);
-								intent.startAnimation(AnimationUtils
-										.loadAnimation(getActivity(),
-												R.anim.animate_welcome));
+								if (!issecAnimPlayed) {
+									intent.startAnimation(AnimationUtils
+											.loadAnimation(getActivity(),
+													R.anim.animate_welcome));
+									issecAnimPlayed = true;
+									intent.setVisibility(View.VISIBLE);
+								}
 							}
 						});
 						break;
@@ -115,7 +160,6 @@ public class FourthFragment extends Fragment {
 						SocketConnect.class);
 				socketConnect.putExtra("IP", ed1.getText().toString());
 				v.getContext().startService(socketConnect);
-
 			}
 		});
 		intent.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +184,8 @@ public class FourthFragment extends Fragment {
 		// TODO Auto-generated method stub
 		return inflater.inflate(R.layout.fragment_fourth, container, false);
 	}
-	private void addIP (String IP){
+
+	private void addIP(String IP) {
 		ContentValues cv = new ContentValues(1);
 		cv.put("IP", IP);
 		db.insert("IPs", null, cv);

@@ -12,6 +12,14 @@ import android.widget.TextView;
 
 public class FirstFragment extends Fragment {
 	TextView welcome;
+	private boolean isAnimPlayed;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		isAnimPlayed = false;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,12 +31,14 @@ public class FirstFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-		welcome = (TextView) getView().findViewById(R.id.welcome);
-		// AlphaAnimation alphaAnimation
-		welcome.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-				R.anim.animate_welcome));
+		if (!isAnimPlayed) {
+			welcome = (TextView) getView().findViewById(R.id.welcome);
+			// AlphaAnimation alphaAnimation
+			welcome.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+					R.anim.animate_welcome));
+			isAnimPlayed = true;
+		}
 	}
-
 
 	@Override
 	public void onPause() {

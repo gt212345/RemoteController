@@ -7,8 +7,11 @@ import com.hrw.remotecontroller.fragments.PptControlFragment;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -26,6 +29,8 @@ public class MainActivity extends Activity {
 	private NavDrawerListAdapter adapter;
 	PptControlFragment frag;
 	private CharSequence mTitle;
+	FragmentTransaction mFragmentTransaction = getFragmentManager()
+			.beginTransaction();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,14 +123,17 @@ public class MainActivity extends Activity {
 		switch (position) {
 		case 0:
 			fragment = new PptControlFragment();
+			mFragmentTransaction.addToBackStack(null);
 			mTitle = "PPT Control";
 			break;
 		case 1:
 			fragment = new MousContFragment();
+			mFragmentTransaction.addToBackStack(null);
 			mTitle = "Mouse Control";
 			break;
 		case 2:
 			fragment = new YoutubeControl();
+			mFragmentTransaction.addToBackStack(null);
 			mTitle = "Music Control";
 		default:
 			break;
@@ -148,13 +156,32 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		FragmentManager fragmentManager = getFragmentManager();
 		// TODO Auto-generated method stub
-		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			fragmentManager.beginTransaction()
-					.add(new PptControlFragment(), "pptfrag").commit();
-			Fragment fragment = fragmentManager.findFragmentByTag("pptfrag");
-			// fragment.myOnKeyDown(keyCode);
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Exit control menu");
+			builder.setMessage("You will go back to IP configure menu");
+			builder.setPositiveButton("OK",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							if (getFragmentManager().getBackStackEntryCount() == 0) {
+								MainActivity.this.finish();
+							} else {
+								getFragmentManager().popBackStack();
+							}
+						}
+					});
+			builder.setNegativeButton("Cancel",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					});
+			builder.show();
+
 		}
 		return super.onKeyDown(keyCode, event);
 	}

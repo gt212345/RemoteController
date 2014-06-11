@@ -7,17 +7,55 @@ import com.hrw.remotecontroller.fragments.SecondFragment;
 import com.hrw.remotecontroller.fragments.ThirdFragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class WelcomeActivity extends Activity {
+	FragmentTransaction mFragmentTransaction = getFragmentManager()
+			.beginTransaction();
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Exit Application");
+			builder.setMessage("the app is shutting down......");
+			builder.setPositiveButton("OK",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							if (getFragmentManager().getBackStackEntryCount() == 0) {
+								WelcomeActivity.this.finish();
+							} else {
+								getFragmentManager().popBackStack();
+							}
+						}
+					});
+			builder.setNegativeButton("Cancel",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					});
+			builder.show();
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
 	public SQLiteDatabase db;
 
 	/**
@@ -63,11 +101,13 @@ public class WelcomeActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		switch (item.getItemId()) {
+		case R.id.deleteDB:
+			db.delete("IPs", "IP", null);
 			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	/**
@@ -86,15 +126,20 @@ public class WelcomeActivity extends Activity {
 			switch (position) {
 			case 0:
 				fragment = new FirstFragment();
+				mFragmentTransaction.addToBackStack(null);
 				break;
 			case 1:
 				fragment = new SecondFragment();
+				mFragmentTransaction.addToBackStack(null);
 				break;
 			case 2:
 				fragment = new ThirdFragment();
+				mFragmentTransaction.addToBackStack(null);
 				break;
 			case 3:
 				fragment = new FourthFragment();
+				mFragmentTransaction.addToBackStack(null);
+				break;
 			}
 
 			return fragment;

@@ -8,10 +8,8 @@ import java.net.Socket;
 import com.example.remotecontroller.R;
 import com.navdrawer.SimpleSideDrawer;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.Service;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -245,43 +243,4 @@ public class PptControlFragment extends Fragment {
 		}
 	};
 
-	public void myOnKeyDown(int keyCode) {
-
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setTitle("exit app");
-		builder.setMessage("You will exit the app...");
-		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				try {
-					int exit = 4;
-					outputStream.write(exit);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					socket.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Intent startMain = new Intent(Intent.ACTION_MAIN);
-				startMain.addCategory(Intent.CATEGORY_HOME);
-				startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivity(startMain);
-				System.exit(0);
-			}
-		});
-		builder.setNegativeButton("Cancel",
-				new DialogInterface.OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-
-					}
-				});
-		builder.show();
-
-	}
 }

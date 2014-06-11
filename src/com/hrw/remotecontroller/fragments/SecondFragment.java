@@ -11,7 +11,18 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class SecondFragment extends Fragment {
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if(isAnimPlayed){
+			first.setVisibility(View.VISIBLE);
+			second.setVisibility(View.VISIBLE);
+		}
+	}
+
 	TextView first, second;
+	boolean isAnimPlayed;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,13 +35,12 @@ public class SecondFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		isAnimPlayed = false;
 	}
 
 	@Override
 	public void onPause() {
 		// TODO Auto-generated method stub
-		first.setVisibility(View.INVISIBLE);
-		second.setVisibility(View.INVISIBLE);
 		super.onPause();
 	}
 
@@ -39,12 +49,15 @@ public class SecondFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
-			first.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome));
-			second.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome2));
-			first.setVisibility(View.VISIBLE);
-			second.setVisibility(View.VISIBLE);
+			if (!isAnimPlayed) {
+				first.startAnimation(AnimationUtils.loadAnimation(
+						getActivity(), R.anim.animate_welcome));
+				second.startAnimation(AnimationUtils.loadAnimation(
+						getActivity(), R.anim.animate_welcome2));
+				isAnimPlayed = true;
+				first.setVisibility(View.VISIBLE);
+				second.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 
