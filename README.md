@@ -30,9 +30,10 @@ and you'll need a server
 
 ## Log
 
-Complete Version 2.0
+Now at 2.11
 
-    - 2.0 Full functionable
+    - 2.11 Change package name
+    - 2.0  Full functionable
     - 1.94 Fix target SDK warning
     - 1.93 Change popupwindow width
     - 1.92 Fix animation replay loop bug
