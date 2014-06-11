@@ -45,11 +45,13 @@ public class YoutubeControl extends Fragment {
 	public void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		try {
-			outputStream.write(15);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (!socket.isClosed()) {
+			try {
+				outputStream.write(15);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -255,7 +257,7 @@ public class YoutubeControl extends Fragment {
 			try {
 				if (IP.length() >= 0) {
 					socket = new Socket();
-					InetSocketAddress isa = new InetSocketAddress(IP, 1025);
+					InetSocketAddress isa = new InetSocketAddress(IP, 2025);
 					try {
 						socket.connect(isa);
 					} catch (IOException e) {

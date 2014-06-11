@@ -20,7 +20,7 @@ public class SocketConnect extends Service {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			int serverPort = 1025;
+			int serverPort = 2025;
 			if (IP.length() >= 0) {
 				Intent i = new Intent(FourthFragment.class.getName());
 				socket = new Socket();

@@ -71,6 +71,6 @@
         android:textStyle="italic|bold"
         android:textColor="#FFFF555F"
         android:visibility="invisible"
-        android:text="小提示:查詢電腦IP位置可以在CMD下輸入ipconfig\n\t\t\t\t若是使用OSX請在terminal下輸入ipconfig" />
+        android:text="小提示:查詢電腦IP位置可以在CMD下輸入ipconfig\n\t\t\t\t若是使用OSX請在terminal下輸入ifconfig" />
 
 </RelativeLayout>

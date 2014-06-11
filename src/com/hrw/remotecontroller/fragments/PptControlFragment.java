@@ -58,11 +58,13 @@ public class PptControlFragment extends Fragment {
 	public void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		try {
-			outputStream.write(107);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (!socket.isClosed()) {
+			try {
+				outputStream.write(107);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -137,7 +139,9 @@ public class PptControlFragment extends Fragment {
 			case R.id.countsend:
 				scrollpage.setMax(Integer.parseInt(pagecount.getText()
 						.toString()));
-				Toast.makeText(getActivity(), "PPT總計"+scrollpage.getMax()+"頁", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(),
+						"PPT總計" + scrollpage.getMax() + "頁", Toast.LENGTH_SHORT)
+						.show();
 				scrollpage.setAnimation((AnimationUtils.loadAnimation(
 						getActivity(), R.anim.animate_welcome)));
 				scrollpage.setVisibility(View.VISIBLE);
@@ -209,7 +213,7 @@ public class PptControlFragment extends Fragment {
 			try {
 				if (IP.length() >= 0) {
 					socket = new Socket();
-					InetSocketAddress isa = new InetSocketAddress(IP, 1025);
+					InetSocketAddress isa = new InetSocketAddress(IP, 2025);
 					try {
 						socket.connect(isa);
 					} catch (IOException e) {

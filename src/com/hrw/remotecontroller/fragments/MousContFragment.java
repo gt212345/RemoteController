@@ -46,11 +46,13 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 		// TODO Auto-generated method stub
 		super.onPause();
 		Log.w("onPause", "Called");
-		try {
-			oos.writeObject(new int[] { (int) 2000, (int) 0 });
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (!socket.isClosed()) {
+			try {
+				oos.writeObject(new int[] { (int) 2000, (int) 0 });
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -131,7 +133,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 			try {
 				if (IP.length() >= 0) {
 					socket = new Socket();
-					InetSocketAddress isa = new InetSocketAddress(IP, 1025);
+					InetSocketAddress isa = new InetSocketAddress(IP, 2025);
 					try {
 						socket.connect(isa);
 						isConnected = true;

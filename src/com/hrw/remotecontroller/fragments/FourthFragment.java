@@ -4,16 +4,20 @@ import java.net.Socket;
 
 import com.example.remotecontroller.R;
 import com.hrw.remotecontroller.activities.MainActivity;
+import com.hrw.remotecontroller.activities.WelcomeActivity;
 import com.hrw.remotecontroller.service.SocketConnect;
 
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +37,7 @@ public class FourthFragment extends Fragment {
 	Handler handler;
 	public String IP;
 	Socket socket;
+	SQLiteDatabase db;
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -57,6 +62,7 @@ public class FourthFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		getFragmentManager().findFragmentByTag("tf");
+		db = ((WelcomeActivity)getActivity()).getDB();
 		intent = (Button) getView().findViewById(R.id.intent);
 		tv1 = (TextView) getView().findViewById(R.id.textView1);
 		tv2 = (TextView) getView().findViewById(R.id.textView2);
@@ -83,6 +89,8 @@ public class FourthFragment extends Fragment {
 					if (isConnected) {
 						getActivity().runOnUiThread(new Runnable() {
 							public void run() {
+								addIP(ed1.getText().toString());
+								Log.w("DB", "IP added");
 								Toast.makeText(getActivity(), "Connected",
 										Toast.LENGTH_SHORT).show();
 								intent.setVisibility(View.VISIBLE);
@@ -131,6 +139,11 @@ public class FourthFragment extends Fragment {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		return inflater.inflate(R.layout.fragment_fourth, container, false);
+	}
+	private void addIP (String IP){
+		ContentValues cv = new ContentValues(1);
+		cv.put("IP", IP);
+		db.insert("IPs", null, cv);
 	}
 
 }

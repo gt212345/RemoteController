@@ -1,8 +1,10 @@
 package com.hrw.remotecontroller.fragments;
 
 import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.activities.WelcomeActivity;
 
 import android.app.Fragment;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +14,9 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +26,9 @@ public class ThirdFragment extends Fragment {
 	Button bt1;
 	Bundle bundle;
 	String IP;
+	SQLiteDatabase db;
+	PopupWindow mpopupwindow;
+	ListView iplist;
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -52,6 +60,7 @@ public class ThirdFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		db = ((WelcomeActivity) getActivity()).getDB();
 		tv1 = (TextView) getView().findViewById(R.id.textView1);
 		tv2 = (TextView) getView().findViewById(R.id.textView2);
 		tv3 = (TextView) getView().findViewById(R.id.textView3);
@@ -94,6 +103,15 @@ public class ThirdFragment extends Fragment {
 						.show();
 			}
 		});
+	}
+
+	private void initPopwindow() {
+		LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+		View popupWindowlayout = layoutInflater
+				.inflate(R.layout.popup_ip, null);
+		mpopupwindow = new PopupWindow(popupWindowlayout, 100, 150);
+		iplist = (ListView) getView().findViewById(R.id.IPs);
+//		iplist.setAdapter(new SimpleAdapter(getActivity(), data, resource, from, to));
 	}
 
 }
