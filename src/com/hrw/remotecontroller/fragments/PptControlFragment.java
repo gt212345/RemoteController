@@ -147,7 +147,7 @@ public class PptControlFragment extends Fragment {
 			try {
 				if (IP.length() >= 0) {
 					socket = new Socket();
-					InetSocketAddress isa = new InetSocketAddress(IP, 1025);
+					InetSocketAddress isa = new InetSocketAddress(IP, 2025);
 					try {
 						socket.connect(isa);
 					} catch (IOException e) {

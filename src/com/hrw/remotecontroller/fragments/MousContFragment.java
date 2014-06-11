@@ -131,7 +131,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 			try {
 				if (IP.length() >= 0) {
 					socket = new Socket();
-					InetSocketAddress isa = new InetSocketAddress(IP, 1025);
+					InetSocketAddress isa = new InetSocketAddress(IP, 2025);
 					try {
 						socket.connect(isa);
 						isConnected = true;
@@ -164,7 +164,13 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	@Override
 	public boolean onSingleTapConfirmed(MotionEvent e) {
 		// TODO Auto-generated method stub
-		return false;
+		try {
+			oos.writeObject(new int[] { (int) 2001, 0 });
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override
@@ -189,7 +195,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	public void onShowPress(MotionEvent e) {
 		// TODO Auto-generated method stub
 		try {
-			oos.writeObject(new int[] { (int) 2001, 0 });
+			oos.writeObject(new int[] { (int) 2002, 0 });
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -199,7 +205,7 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	@Override
 	public boolean onSingleTapUp(MotionEvent e) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
