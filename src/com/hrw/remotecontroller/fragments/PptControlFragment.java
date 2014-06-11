@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 import com.navdrawer.SimpleSideDrawer;
 
 import android.app.Fragment;

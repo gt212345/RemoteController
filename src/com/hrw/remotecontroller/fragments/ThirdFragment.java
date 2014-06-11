@@ -2,7 +2,7 @@ package com.hrw.remotecontroller.fragments;
 
 import java.util.ArrayList;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 import com.hrw.remotecontroller.activities.WelcomeActivity;
 
 import android.app.Fragment;

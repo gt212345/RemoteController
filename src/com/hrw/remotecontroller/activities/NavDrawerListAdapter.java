@@ -1,7 +1,6 @@
 package com.hrw.remotecontroller.activities;
 
-import com.example.remotecontroller.R;
-
+import com.hrw.remotecontroller.R;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

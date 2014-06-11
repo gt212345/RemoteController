@@ -25,7 +25,7 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 
 public class MousContFragment extends Fragment implements OnGestureListener,
 		OnDoubleTapListener {

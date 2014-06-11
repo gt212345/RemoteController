@@ -1,6 +1,6 @@
 package com.hrw.remotecontroller.activities;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 import com.hrw.remotecontroller.fragments.FirstFragment;
 import com.hrw.remotecontroller.fragments.FourthFragment;
 import com.hrw.remotecontroller.fragments.SecondFragment;
@@ -31,7 +31,7 @@ public class WelcomeActivity extends Activity {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Exit Application");
-			builder.setMessage("the app is shutting down......");
+			builder.setMessage("The app is shutting down......");
 			builder.setPositiveButton("OK",
 					new DialogInterface.OnClickListener() {
 						@Override

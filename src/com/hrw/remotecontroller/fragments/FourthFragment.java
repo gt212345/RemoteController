@@ -2,7 +2,7 @@ package com.hrw.remotecontroller.fragments;
 
 import java.net.Socket;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 import com.hrw.remotecontroller.activities.MainActivity;
 import com.hrw.remotecontroller.activities.WelcomeActivity;
 import com.hrw.remotecontroller.service.SocketConnect;
