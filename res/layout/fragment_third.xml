@@ -73,4 +73,13 @@
         android:visibility="invisible"
         android:text="小提示:查詢電腦IP位置可以在CMD下輸入ipconfig\n\t\t\t\t若是使用OSX請在terminal下輸入ifconfig" />
 
+    <Button
+        android:id="@+id/useDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:text="歷史紀錄"
+        android:visibility="invisible" />
+
 </RelativeLayout>
