@@ -29,6 +29,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FourthFragment extends Fragment {
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if(isfirstAnimPlayed){
+			tv2.setVisibility(View.VISIBLE);
+			tv1.setVisibility(View.VISIBLE);
+			tv3.setVisibility(View.VISIBLE);
+			bt1.setVisibility(View.VISIBLE);
+		}
+		if(issecAnimPlayed){
+			intent.setVisibility(View.VISIBLE);
+		}
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		isfirstAnimPlayed = false;
+		issecAnimPlayed = false;
+	}
+
 	boolean isConnected;
 	int serverPort = 1025;
 	TextView tv1, tv2, tv3;
@@ -40,22 +63,27 @@ public class FourthFragment extends Fragment {
 	Socket socket;
 	SQLiteDatabase db;
 	boolean isDuplicate = false;
+	boolean issecAnimPlayed;
+	boolean isfirstAnimPlayed;
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
-			tv2.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome));
-			tv1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome2));
-			tv3.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome3));
-			tv2.setVisibility(View.VISIBLE);
-			tv1.setVisibility(View.VISIBLE);
-			tv3.setVisibility(View.VISIBLE);
-			bt1.setVisibility(View.VISIBLE);
+			if (!isfirstAnimPlayed) {
+				tv2.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome));
+				tv1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome2));
+				tv3.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome3));
+				isfirstAnimPlayed = true;
+				tv2.setVisibility(View.VISIBLE);
+				tv1.setVisibility(View.VISIBLE);
+				tv3.setVisibility(View.VISIBLE);
+				bt1.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 
@@ -107,10 +135,13 @@ public class FourthFragment extends Fragment {
 								Log.w("DB", "IP added");
 								Toast.makeText(getActivity(), "Connected",
 										Toast.LENGTH_SHORT).show();
-								intent.setVisibility(View.VISIBLE);
-								intent.startAnimation(AnimationUtils
-										.loadAnimation(getActivity(),
-												R.anim.animate_welcome));
+								if (!issecAnimPlayed) {
+									intent.startAnimation(AnimationUtils
+											.loadAnimation(getActivity(),
+													R.anim.animate_welcome));
+									issecAnimPlayed = true;
+									intent.setVisibility(View.VISIBLE);
+								}
 							}
 						});
 						break;

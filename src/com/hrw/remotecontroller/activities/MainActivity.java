@@ -161,7 +161,7 @@ public class MainActivity extends Activity {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Exit control menu");
-			builder.setMessage("You will go back to IP chose menu");
+			builder.setMessage("You will go back to IP configure menu");
 			builder.setPositiveButton("OK",
 					new DialogInterface.OnClickListener() {
 						@Override

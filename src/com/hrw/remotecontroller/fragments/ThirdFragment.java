@@ -31,6 +31,30 @@ import android.widget.Toast;
 
 public class ThirdFragment extends Fragment {
 
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (isfirstAnimPlayed) {
+			tv1.setVisibility(View.VISIBLE);
+			tv2.setVisibility(View.VISIBLE);
+			tv4.setVisibility(View.VISIBLE);
+			usedb.setVisibility(View.VISIBLE);
+		}
+		if (issecAnimPlayed) {
+			tv3.setVisibility(View.VISIBLE);
+			bt1.setVisibility(View.VISIBLE);
+		}
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		isfirstAnimPlayed = false;
+		issecAnimPlayed = false;
+	}
+
 	TextView tv1, tv2, tv3, tv4;
 	static EditText ed1;
 	Button bt1, usedb;
@@ -40,24 +64,29 @@ public class ThirdFragment extends Fragment {
 	PopupWindow mpopupwindow;
 	ListView iplist;
 	private ArrayList<String> IPs;
+	private boolean isfirstAnimPlayed;
+	private boolean issecAnimPlayed;
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
-			usedb.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome2));
-			tv1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome));
-			tv2.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome2));
-			tv4.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-					R.anim.animate_welcome3));
-			tv1.setVisibility(View.VISIBLE);
-			tv2.setVisibility(View.VISIBLE);
-			tv4.setVisibility(View.VISIBLE);
-			usedb.setVisibility(View.VISIBLE);
+			if (!isfirstAnimPlayed) {
+				usedb.startAnimation(AnimationUtils.loadAnimation(
+						getActivity(), R.anim.animate_welcome2));
+				tv1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome));
+				tv2.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome2));
+				tv4.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+						R.anim.animate_welcome3));
+				isfirstAnimPlayed = true;
+				tv1.setVisibility(View.VISIBLE);
+				tv2.setVisibility(View.VISIBLE);
+				tv4.setVisibility(View.VISIBLE);
+				usedb.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 
@@ -108,12 +137,15 @@ public class ThirdFragment extends Fragment {
 			@Override
 			public void afterTextChanged(Editable s) {
 				// TODO Auto-generated method stub
-				tv3.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-						R.anim.animate_welcome2));
-				bt1.startAnimation(AnimationUtils.loadAnimation(getActivity(),
-						R.anim.animate_welcome2));
-				tv3.setVisibility(View.VISIBLE);
-				bt1.setVisibility(View.VISIBLE);
+				if (!issecAnimPlayed) {
+					tv3.startAnimation(AnimationUtils.loadAnimation(
+							getActivity(), R.anim.animate_welcome2));
+					bt1.startAnimation(AnimationUtils.loadAnimation(
+							getActivity(), R.anim.animate_welcome2));
+					issecAnimPlayed = true;
+					tv3.setVisibility(View.VISIBLE);
+					bt1.setVisibility(View.VISIBLE);
+				}
 			}
 		});
 		bt1 = (Button) getView().findViewById(R.id.button1);
