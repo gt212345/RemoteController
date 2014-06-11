@@ -138,28 +138,30 @@ public class ThirdFragment extends Fragment {
 				IPs.add(c.getString(0));
 			} while (c.moveToNext());
 		}
-		mpopupwindow = new PopupWindow(popupWindowlayout, 200, 300, true);
-//		mpopupwindow.setAnimationStyle(R.style.);
-		mpopupwindow.setBackgroundDrawable(new BitmapDrawable(getResources(),
-				""));
-		mpopupwindow.update();
-		Log.w("IPdb", IPs.get(0));
-		iplist = (ListView) popupWindowlayout.findViewById(R.id.IPs);
-		ArrayAdapter<String> aad = new ArrayAdapter<String>(getActivity()
-				.getApplicationContext(), R.layout.list_ip, IPs);
-		iplist.setAdapter(aad);
-		mpopupwindow.showAtLocation(getView(), Gravity.RIGHT, 0, 0);
-		iplist.setOnItemClickListener(new OnItemClickListener() {
+		if (!IPs.isEmpty()) {
+			mpopupwindow = new PopupWindow(popupWindowlayout, 200, 300, true);
+			// mpopupwindow.setAnimationStyle(R.style.);
+			mpopupwindow.setBackgroundDrawable(new BitmapDrawable(
+					getResources(), ""));
+			mpopupwindow.update();
+			Log.w("IPdb", IPs.get(0));
+			iplist = (ListView) popupWindowlayout.findViewById(R.id.IPs);
+			ArrayAdapter<String> aad = new ArrayAdapter<String>(getActivity()
+					.getApplicationContext(), R.layout.list_ip, IPs);
+			iplist.setAdapter(aad);
+			mpopupwindow.showAtLocation(getView(), Gravity.RIGHT, 0, 0);
+			iplist.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				ed1.setText(iplist.getItemAtPosition(position).toString());
-				Log.w("onItemclick","called");
-				mpopupwindow.dismiss();
-			}
-		});
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					// TODO Auto-generated method stub
+					ed1.setText(iplist.getItemAtPosition(position).toString());
+					Log.w("onItemclick", "called");
+					mpopupwindow.dismiss();
+				}
+			});
+		}
 	}
 
 }

@@ -9,9 +9,10 @@ package com.example.remotecontroller;
 
 public final class R {
     public static final class anim {
-        public static final int animate_welcome=0x7f040000;
-        public static final int animate_welcome2=0x7f040001;
-        public static final int animate_welcome3=0x7f040002;
+        public static final int animate_popupwindow=0x7f040000;
+        public static final int animate_welcome=0x7f040001;
+        public static final int animate_welcome2=0x7f040002;
+        public static final int animate_welcome3=0x7f040003;
     }
     public static final class attr {
     }
@@ -111,6 +112,7 @@ public final class R {
         public static final int fragment_youtubecontrol=0x7f030009;
         public static final int list_ip=0x7f03000a;
         public static final int popup_ip=0x7f03000b;
+        public static final int popup_mouseinfo=0x7f03000c;
     }
     public static final class menu {
         public static final int controll=0x7f090000;

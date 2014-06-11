@@ -13,6 +13,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,6 +39,7 @@ public class FourthFragment extends Fragment {
 	public String IP;
 	Socket socket;
 	SQLiteDatabase db;
+	boolean isDuplicate = false;
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -62,7 +64,7 @@ public class FourthFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		getFragmentManager().findFragmentByTag("tf");
-		db = ((WelcomeActivity)getActivity()).getDB();
+		db = ((WelcomeActivity) getActivity()).getDB();
 		intent = (Button) getView().findViewById(R.id.intent);
 		tv1 = (TextView) getView().findViewById(R.id.textView1);
 		tv2 = (TextView) getView().findViewById(R.id.textView2);
@@ -89,7 +91,19 @@ public class FourthFragment extends Fragment {
 					if (isConnected) {
 						getActivity().runOnUiThread(new Runnable() {
 							public void run() {
-								addIP(ed1.getText().toString());
+								Cursor c = db.rawQuery("SELECT * FROM IPs",
+										null);
+								if (c.moveToFirst()) {
+									do {
+										if (ed1.getText().toString()
+												.equals(c.getString(0))) {
+											isDuplicate = true;
+										}
+									} while (c.moveToNext());
+								}
+								if (!isDuplicate) {
+									addIP(ed1.getText().toString());
+								}
 								Log.w("DB", "IP added");
 								Toast.makeText(getActivity(), "Connected",
 										Toast.LENGTH_SHORT).show();
@@ -140,7 +154,8 @@ public class FourthFragment extends Fragment {
 		// TODO Auto-generated method stub
 		return inflater.inflate(R.layout.fragment_fourth, container, false);
 	}
-	private void addIP (String IP){
+
+	private void addIP(String IP) {
 		ContentValues cv = new ContentValues(1);
 		cv.put("IP", IP);
 		db.insert("IPs", null, cv);
