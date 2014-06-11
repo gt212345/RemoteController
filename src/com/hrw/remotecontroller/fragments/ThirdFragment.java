@@ -172,7 +172,7 @@ public class ThirdFragment extends Fragment {
 			} while (c.moveToNext());
 		}
 		if (!IPs.isEmpty()) {
-			mpopupwindow = new PopupWindow(popupWindowlayout, 200, 300, true);
+			mpopupwindow = new PopupWindow(popupWindowlayout, 210, 300, true);
 			// mpopupwindow.setAnimationStyle(R.style.);
 			mpopupwindow.setBackgroundDrawable(new BitmapDrawable(
 					getResources(), ""));

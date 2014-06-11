@@ -160,7 +160,6 @@ public class FourthFragment extends Fragment {
 						SocketConnect.class);
 				socketConnect.putExtra("IP", ed1.getText().toString());
 				v.getContext().startService(socketConnect);
-
 			}
 		});
 		intent.setOnClickListener(new View.OnClickListener() {
