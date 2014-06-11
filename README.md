@@ -30,9 +30,23 @@ and you'll need a server
 
 ## Log
 
-I'm still working on the side sliding menu which allow user to switch between different fuction, quit a hard work for me, as i'm messing aroud with fragments.
+Complete Version 2.0
 
-now at version 1.0
-	complete PPT function and welcome fragment.
+    - 2.0 Full functionable
+    - 1.94 Fix target SDK warning
+    - 1.93 Change popupwindow width
+    - 1.92 Fix animation replay loop bug
+    - 1.91 Add back press behave for both activities
+    - 1.82 Add DB delete method
+    - 1.81 Add MouseControl popupwindow info
+    - 1.71 Add popupwindow to select from past ip list
+    - 1.61 Add sql DB for Storing past ip addresses
+    .
+    .
+    .
+    .
+    .
+    .
+    
 
 
