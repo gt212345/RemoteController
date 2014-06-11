@@ -2,28 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/frag1"
     tools:context="com.example.remotecontroller.SecondFragment$PlaceholderFragment" >
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/圖片1" />
 
     <TextView
         android:id="@+id/Second"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/image2"
+        android:layout_marginTop="23dp"
         android:gravity="center"
-        android:text="請先開啟Wifi\n並確認您欲操控之個人電腦\n與操控手機於同一區域網路下"
+        android:text="並確認電腦和手機在同一wifi中"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
 
-    <TextView
-        android:id="@+id/First"
+    <Button
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Second"
+        android:layout_alignBottom="@+id/Second"
         android:layout_centerHorizontal="true"
-        android:text="首先"
-        android:textSize="30sp"
-        android:textStyle="italic"
-        android:visibility="invisible" />
+        android:layout_marginBottom="38dp"
+        android:onClick="wifiopen"
+        android:text="請先開啟wifi" />
 
 </RelativeLayout>

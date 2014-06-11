@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="請輸入欲操控電腦之IP位址"
+        android:text="請輸入欲操控電腦的IP位址"
         android:textStyle="italic"
         android:visibility="invisible" />
 
