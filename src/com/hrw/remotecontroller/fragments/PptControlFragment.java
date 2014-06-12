@@ -21,12 +21,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 public class PptControlFragment extends Fragment {
 	private static Button play, stop, prevpage, nextpage, whiteout, paintmode,
 			send;
+	private TextView currentpage;
 	private OutputStream outputStream;
 	private final static int F5 = 100;
 	private final static int Forward = 102;
@@ -70,6 +72,8 @@ public class PptControlFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		currentpage = (TextView) getView().findViewById(R.id.currentpage);
+		currentpage.setText("第 1 頁");
 		send = (Button) getView().findViewById(R.id.countsend);
 		send.setOnClickListener(btnOnclickListener);
 		whiteout = (Button) getView().findViewById(R.id.whiteout);
@@ -92,6 +96,7 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
+				currentpage.setText("第 "+String.valueOf(seekBar.getProgress())+" 頁");
 				try {
 					outputStream.write(seekBar.getProgress());
 				} catch (IOException e) {
@@ -103,6 +108,7 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
+				currentpage.setText("第 "+String.valueOf(seekBar.getProgress())+" 頁");
 				try {
 					outputStream.write(seekBar.getProgress());
 				} catch (IOException e) {
@@ -115,6 +121,7 @@ public class PptControlFragment extends Fragment {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
+				currentpage.setText("第 "+String.valueOf(progress)+" 頁");
 				try {
 					outputStream.write(progress);
 				} catch (IOException e) {
