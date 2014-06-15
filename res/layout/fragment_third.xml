@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="請輸入欲操控電腦之IP位址"
+        android:text="Please enter your PC's IP address"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:text="接著"
+        android:text="Next"
         android:textSize="30sp"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editText1"
         android:layout_below="@+id/editText1"
-        android:text="確認"
+        android:text="OK"
         android:textSize="20sp"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
-        android:text="輸入完畢請按下確認"
+        android:text="Click OK after finishing typing"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -71,7 +71,7 @@
         android:textStyle="italic|bold"
         android:textColor="#FFFF555F"
         android:visibility="invisible"
-        android:text="小提示:查詢電腦IP位置可以在CMD下輸入ipconfig\n\t\t\t\t若是使用OSX請在terminal下輸入ifconfig" />
+        android:text="小提示:To Look up your PC's IP address:\n\t\t\t\tUnder CMD enter ipconfig\n\t\t\t\tIf using OSX under terminal enter ifconfig" />
 
     <Button
         android:id="@+id/useDB"
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText1"
-        android:text="歷史紀錄"
+        android:text="Historic IP"
         android:visibility="invisible" />
 
 </RelativeLayout>

@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle("選擇控制頁面");
+				getActionBar().setTitle("Control Mode Selection");
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
 			}

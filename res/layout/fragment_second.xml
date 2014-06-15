@@ -11,9 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="請先開啟Wifi\n並確認您欲操控之個人電腦\n與操控手機於同一區域網路下"
+        android:text="Toggle up your WIFI\nConfirm your PC and\nYour control device connected to the same WIFI spot"
         android:textStyle="italic|bold"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+         />
 
     <TextView
         android:id="@+id/First"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/Second"
         android:layout_centerHorizontal="true"
-        android:text="首先"
+        android:text="First"
         android:textSize="30sp"
         android:textStyle="italic"
         android:visibility="invisible" />

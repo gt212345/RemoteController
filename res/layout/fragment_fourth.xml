@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="請確認電腦Server端已經開啟"
+        android:text="Please confirm server is running"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:text="最後"
+        android:text="Finally"
         android:textSize="30sp"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
@@ -32,7 +32,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="連線"
+        android:text="Connect"
         android:textStyle="italic" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button1"
-        android:text="確認完畢請按下連線並等待連線成功"
+        android:text="If does click connect"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -54,7 +54,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="59dp"
-        android:text="切換至控制頁面"
+        android:text="Switch to Control Menu"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
 

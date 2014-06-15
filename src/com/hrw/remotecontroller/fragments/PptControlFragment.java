@@ -73,7 +73,7 @@ public class PptControlFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		currentpage = (TextView) getView().findViewById(R.id.currentpage);
-		currentpage.setText("第 1 頁");
+		currentpage.setText("Page: 1");
 		send = (Button) getView().findViewById(R.id.countsend);
 		send.setOnClickListener(btnOnclickListener);
 		whiteout = (Button) getView().findViewById(R.id.whiteout);
@@ -96,8 +96,8 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				currentpage.setText("第 "
-						+ String.valueOf(seekBar.getProgress()) + " 頁");
+				currentpage.setText("Page: "
+						+ String.valueOf(seekBar.getProgress()));
 				try {
 					outputStream.write(seekBar.getProgress() + 1);
 				} catch (IOException e) {
@@ -109,8 +109,8 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				currentpage.setText("第 "
-						+ String.valueOf(seekBar.getProgress()) + " 頁");
+				currentpage.setText("Page :"
+						+ String.valueOf(seekBar.getProgress()));
 				try {
 					outputStream.write(seekBar.getProgress() + 1);
 				} catch (IOException e) {
@@ -123,7 +123,7 @@ public class PptControlFragment extends Fragment {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
-				currentpage.setText("第 " + String.valueOf(progress + 1) + " 頁");
+				currentpage.setText("Page :" + String.valueOf(progress + 1));
 				try {
 					outputStream.write(progress);
 				} catch (IOException e) {
@@ -147,7 +147,7 @@ public class PptControlFragment extends Fragment {
 				scrollpage.setMax(Integer.parseInt(pagecount.getText()
 						.toString()));
 				Toast.makeText(getActivity(),
-						"PPT共" + scrollpage.getMax() + "頁",
+						"PPT Tatol " + scrollpage.getMax() + "Pages",
 						Toast.LENGTH_SHORT).show();
 				scrollpage.setAnimation((AnimationUtils.loadAnimation(
 						getActivity(), R.anim.animate_welcome)));

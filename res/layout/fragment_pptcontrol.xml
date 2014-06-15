@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:ems="10"
-            android:hint="請輸入頁數"
+            android:hint="Enter PPT total pages"
             android:inputType="number" >
 
             <requestFocus />
@@ -111,7 +111,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="確認" />
+        android:text="Confirm" />
 
     <SeekBar
         android:id="@+id/scrollpage"
