@@ -12,8 +12,8 @@ import android.widget.TextView;
 public class NavDrawerListAdapter extends BaseAdapter {
 	// private LayoutInflater myInflater;
 	Context context;
-	static final String[] controlFragments = new String[] { "PowerPoint±±¨î­¶­±",
-			"Mouse±±¨î­¶­±","Youtube±±¨î­¶­±" };
+	static final String[] controlFragments = new String[] { "PowerPointæ§åˆ¶é é¢",
+			"Mouseæ§åˆ¶é é¢","Youtubeæ§åˆ¶é é¢" };
 
 	public NavDrawerListAdapter(Context ctxt) {
 		this.context = ctxt;

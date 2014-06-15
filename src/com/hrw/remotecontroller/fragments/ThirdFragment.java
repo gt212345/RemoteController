@@ -154,7 +154,7 @@ public class ThirdFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(getActivity(), "IP¶Ï∏m§w¶s®˙", Toast.LENGTH_SHORT)
+				Toast.makeText(getActivity(), "IP‰ΩçÁΩÆÂ∑≤Â≠òÂèñ", Toast.LENGTH_SHORT)
 						.show();
 			}
 		});
@@ -172,7 +172,7 @@ public class ThirdFragment extends Fragment {
 			} while (c.moveToNext());
 		}
 		if (!IPs.isEmpty()) {
-			mpopupwindow = new PopupWindow(popupWindowlayout, 210, 300, true);
+			mpopupwindow = new PopupWindow(popupWindowlayout, 400, 300, true);
 			// mpopupwindow.setAnimationStyle(R.style.);
 			mpopupwindow.setBackgroundDrawable(new BitmapDrawable(
 					getResources(), ""));

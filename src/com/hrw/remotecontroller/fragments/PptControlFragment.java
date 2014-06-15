@@ -73,7 +73,7 @@ public class PptControlFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		currentpage = (TextView) getView().findViewById(R.id.currentpage);
-		currentpage.setText("≤ƒ 1 ≠∂");
+		currentpage.setText("Á¨¨ 1 È†Å");
 		send = (Button) getView().findViewById(R.id.countsend);
 		send.setOnClickListener(btnOnclickListener);
 		whiteout = (Button) getView().findViewById(R.id.whiteout);
@@ -96,9 +96,10 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				currentpage.setText("≤ƒ "+String.valueOf(seekBar.getProgress())+" ≠∂");
+				currentpage.setText("Á¨¨ "
+						+ String.valueOf(seekBar.getProgress()) + " È†Å");
 				try {
-					outputStream.write(seekBar.getProgress());
+					outputStream.write(seekBar.getProgress() + 1);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -108,9 +109,10 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				currentpage.setText("≤ƒ "+String.valueOf(seekBar.getProgress())+" ≠∂");
+				currentpage.setText("Á¨¨ "
+						+ String.valueOf(seekBar.getProgress()) + " È†Å");
 				try {
-					outputStream.write(seekBar.getProgress());
+					outputStream.write(seekBar.getProgress() + 1);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -121,7 +123,7 @@ public class PptControlFragment extends Fragment {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
-				currentpage.setText("≤ƒ "+String.valueOf(progress)+" ≠∂");
+				currentpage.setText("Á¨¨ " + String.valueOf(progress + 1) + " È†Å");
 				try {
 					outputStream.write(progress);
 				} catch (IOException e) {
@@ -145,8 +147,8 @@ public class PptControlFragment extends Fragment {
 				scrollpage.setMax(Integer.parseInt(pagecount.getText()
 						.toString()));
 				Toast.makeText(getActivity(),
-						"PPT¡`≠p" + scrollpage.getMax() + "≠∂", Toast.LENGTH_SHORT)
-						.show();
+						"PPTÂÖ±" + scrollpage.getMax() + "È†Å",
+						Toast.LENGTH_SHORT).show();
 				scrollpage.setAnimation((AnimationUtils.loadAnimation(
 						getActivity(), R.anim.animate_welcome)));
 				scrollpage.setVisibility(View.VISIBLE);

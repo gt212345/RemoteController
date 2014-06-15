@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle("±±¨î¿ï³æ");
+				getActionBar().setTitle("é¸æ“‡æ§åˆ¶é é¢");
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
 			}

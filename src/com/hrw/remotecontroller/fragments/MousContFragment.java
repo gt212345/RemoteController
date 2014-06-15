@@ -249,13 +249,13 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 		LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 		View popupWindowlayout = layoutInflater
 				.inflate(R.layout.popup_mouseinfo, null);
-		mpopupwindow = new PopupWindow(popupWindowlayout, 400, 120, true);
+		mpopupwindow = new PopupWindow(popupWindowlayout, 900, 300, true);
 		mpopupwindow.setBackgroundDrawable(new BitmapDrawable(getResources(),
 				""));
 		popupWindowlayout.setAnimation(AnimationUtils.loadAnimation(getActivity(),
 						R.anim.animate_popupwindow));
 		mpopupwindow.update();
-		mpopupwindow.showAtLocation(getView(), Gravity.CENTER, 0, 0);
+		mpopupwindow.showAtLocation(getView(), Gravity.CENTER, 70, 0);
 	}
 
 }
