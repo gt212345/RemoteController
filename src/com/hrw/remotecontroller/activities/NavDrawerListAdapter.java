@@ -1,7 +1,6 @@
 package com.hrw.remotecontroller.activities;
 
-import com.example.remotecontroller.R;
-
+import com.hrw.remotecontroller.R;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,8 +12,8 @@ import android.widget.TextView;
 public class NavDrawerListAdapter extends BaseAdapter {
 	// private LayoutInflater myInflater;
 	Context context;
-	static final String[] controlFragments = new String[] { "PowerPoint控制頁面",
-			"Mouse控制頁面","Youtube控制頁面" };
+	static final String[] controlFragments = new String[] { "PowerPoint Control Mode",
+			"Mouse Control Mode","Youtube Control Mode" };
 
 	public NavDrawerListAdapter(Context ctxt) {
 		this.context = ctxt;

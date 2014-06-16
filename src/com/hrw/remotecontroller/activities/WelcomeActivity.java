@@ -1,9 +1,10 @@
 package com.hrw.remotecontroller.activities;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 import com.hrw.remotecontroller.fragments.FirstFragment;
 import com.hrw.remotecontroller.fragments.FourthFragment;
 import com.hrw.remotecontroller.fragments.SecondFragment;
+import com.hrw.remotecontroller.fragments.ServerDoFrag;
 import com.hrw.remotecontroller.fragments.ThirdFragment;
 
 import android.app.Activity;
@@ -31,7 +32,7 @@ public class WelcomeActivity extends Activity {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Exit Application");
-			builder.setMessage("the app is shutting down......");
+			builder.setMessage("The app is shutting down......");
 			builder.setPositiveButton("OK",
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -129,14 +130,18 @@ public class WelcomeActivity extends Activity {
 				mFragmentTransaction.addToBackStack(null);
 				break;
 			case 1:
-				fragment = new SecondFragment();
+				fragment = new ServerDoFrag();
 				mFragmentTransaction.addToBackStack(null);
 				break;
 			case 2:
-				fragment = new ThirdFragment();
+				fragment = new SecondFragment();
 				mFragmentTransaction.addToBackStack(null);
 				break;
 			case 3:
+				fragment = new ThirdFragment();
+				mFragmentTransaction.addToBackStack(null);
+				break;
+			case 4:
 				fragment = new FourthFragment();
 				mFragmentTransaction.addToBackStack(null);
 				break;
@@ -147,7 +152,7 @@ public class WelcomeActivity extends Activity {
 
 		public int getCount() {
 			// Show 3 total pages.
-			return 4;
+			return 5;
 		}
 
 		@Override
@@ -161,6 +166,8 @@ public class WelcomeActivity extends Activity {
 				return new String("Step 2");
 			case 3:
 				return new String("Step 3");
+			case 4:
+				return new String("Step 4");
 			}
 			return null;
 		}

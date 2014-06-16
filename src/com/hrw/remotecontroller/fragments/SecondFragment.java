@@ -1,6 +1,6 @@
 package com.hrw.remotecontroller.fragments;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 
 import android.app.Fragment;
 import android.os.Bundle;

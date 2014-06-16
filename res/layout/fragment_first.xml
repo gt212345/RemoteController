@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="歡迎"
+        android:text="Welcome"
         android:textColor="#FF00FFFF"
         android:textSize="40sp"
         android:textStyle="italic|bold" />

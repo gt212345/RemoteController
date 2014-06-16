@@ -1,6 +1,6 @@
 package com.hrw.remotecontroller.activities;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 import com.hrw.remotecontroller.fragments.MousContFragment;
 import com.hrw.remotecontroller.fragments.YoutubeControl;
 import com.hrw.remotecontroller.fragments.PptControlFragment;
@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle("±±¨î¿ï³æ");
+				getActionBar().setTitle("Control Mode Selection");
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
 			}

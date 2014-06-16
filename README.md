@@ -30,8 +30,8 @@ and you'll need a server
 
 ## Log
 
-Now at 2.11
-
+	- 2.13 Adjust layout for hdpi devices
+    - 2.12 Add textview to display current ppt page
     - 2.11 Change package name
     - 2.0  Full functionable
     - 1.94 Fix target SDK warning

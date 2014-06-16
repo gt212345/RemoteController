@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:src="@drawable/server" />
+
+    <TextView
+        android:id="@+id/downloadserver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:textStyle="italic|bold"
+        android:layout_below="@+id/imageView1"
+        android:textColor="#FFF9A009"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="You'll need to download the server first to begin" />
+
+    <TextView
+        android:id="@+id/url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/downloadserver"
+        android:layout_marginTop="33dp"
+        android:textColor="#F009AFF9"
+        android:gravity="center"
+        android:text="Enter the URL below in your PC&apos;s browser to start downloading"
+        android:textSize="20sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/url"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="italic|bold"
+        android:layout_marginTop="42dp"
+        android:autoLink="web"
+        android:text="@string/download_link" />
+
+</RelativeLayout>

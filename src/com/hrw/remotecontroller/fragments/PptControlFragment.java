@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 import com.navdrawer.SimpleSideDrawer;
 
 import android.app.Fragment;
@@ -21,12 +21,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 public class PptControlFragment extends Fragment {
 	private static Button play, stop, prevpage, nextpage, whiteout, paintmode,
 			send;
+	private TextView currentpage;
 	private OutputStream outputStream;
 	private final static int F5 = 100;
 	private final static int Forward = 102;
@@ -70,6 +72,8 @@ public class PptControlFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		currentpage = (TextView) getView().findViewById(R.id.currentpage);
+		currentpage.setText("Page: 1");
 		send = (Button) getView().findViewById(R.id.countsend);
 		send.setOnClickListener(btnOnclickListener);
 		whiteout = (Button) getView().findViewById(R.id.whiteout);
@@ -92,8 +96,10 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
+				currentpage.setText("Page: "
+						+ String.valueOf(seekBar.getProgress()));
 				try {
-					outputStream.write(seekBar.getProgress());
+					outputStream.write(seekBar.getProgress() + 1);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -103,8 +109,10 @@ public class PptControlFragment extends Fragment {
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
+				currentpage.setText("Page :"
+						+ String.valueOf(seekBar.getProgress()));
 				try {
-					outputStream.write(seekBar.getProgress());
+					outputStream.write(seekBar.getProgress() + 1);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -115,6 +123,7 @@ public class PptControlFragment extends Fragment {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
+				currentpage.setText("Page :" + String.valueOf(progress + 1));
 				try {
 					outputStream.write(progress);
 				} catch (IOException e) {
@@ -138,8 +147,8 @@ public class PptControlFragment extends Fragment {
 				scrollpage.setMax(Integer.parseInt(pagecount.getText()
 						.toString()));
 				Toast.makeText(getActivity(),
-						"PPTÁ`­p" + scrollpage.getMax() + "­¶", Toast.LENGTH_SHORT)
-						.show();
+						"PPT Tatol " + scrollpage.getMax() + "Pages",
+						Toast.LENGTH_SHORT).show();
 				scrollpage.setAnimation((AnimationUtils.loadAnimation(
 						getActivity(), R.anim.animate_welcome)));
 				scrollpage.setVisibility(View.VISIBLE);

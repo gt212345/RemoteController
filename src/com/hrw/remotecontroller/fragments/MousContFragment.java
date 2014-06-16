@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
@@ -25,7 +24,7 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.example.remotecontroller.R;
+import com.hrw.remotecontroller.R;
 
 public class MousContFragment extends Fragment implements OnGestureListener,
 		OnDoubleTapListener {
@@ -36,21 +35,18 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	public void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		Log.w("onStart", "Called");
 	}
 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		Log.w("onResume", "Called");
 	}
 
 	@Override
 	public void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		Log.w("onPause", "Called");
 		if (!socket.isClosed()) {
 			try {
 				oos.writeObject(new int[] { (int) 2000, (int) 0 });
@@ -65,21 +61,18 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	public void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		Log.w("onStop", "Called");
 	}
 
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		Log.w("onDestroy", "Called");
 	}
 
 	@Override
 	public void onDetach() {
 		// TODO Auto-generated method stub
 		super.onDetach();
-		Log.w("onDetach", "Called");
 	}
 
 	@Override
@@ -220,12 +213,9 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
 			float distanceY) {
 		// TODO Auto-generated method stub
-		Log.w("distanceX", String.valueOf(distanceX));
-		Log.w("distanceY", String.valueOf(distanceY));
 		try {
 			oos.writeObject(new int[] { (int) (distanceX + 0.5),
 					(int) (distanceY + 0.5) });
-			Log.w("write", "Sent");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -249,13 +239,13 @@ public class MousContFragment extends Fragment implements OnGestureListener,
 		LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 		View popupWindowlayout = layoutInflater
 				.inflate(R.layout.popup_mouseinfo, null);
-		mpopupwindow = new PopupWindow(popupWindowlayout, 400, 120, true);
+		mpopupwindow = new PopupWindow(popupWindowlayout, 900, 300, true);
 		mpopupwindow.setBackgroundDrawable(new BitmapDrawable(getResources(),
 				""));
 		popupWindowlayout.setAnimation(AnimationUtils.loadAnimation(getActivity(),
 						R.anim.animate_popupwindow));
 		mpopupwindow.update();
-		mpopupwindow.showAtLocation(getView(), Gravity.CENTER, 0, 0);
+		mpopupwindow.showAtLocation(getView(), Gravity.CENTER, 70, 0);
 	}
 
 }
