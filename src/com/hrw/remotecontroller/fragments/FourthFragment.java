@@ -18,7 +18,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -132,7 +131,6 @@ public class FourthFragment extends Fragment {
 								if (!isDuplicate) {
 									addIP(ed1.getText().toString());
 								}
-								Log.w("DB", "IP added");
 								Toast.makeText(getActivity(), "Connected",
 										Toast.LENGTH_SHORT).show();
 								if (!issecAnimPlayed) {
