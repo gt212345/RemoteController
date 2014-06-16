@@ -71,7 +71,7 @@
         android:textStyle="italic|bold"
         android:textColor="#FFFF555F"
         android:visibility="invisible"
-        android:text="小提示:To Look up your PC's IP address:\n\t\t\t\tUnder CMD enter ipconfig\n\t\t\t\tIf using OSX under terminal enter ifconfig" />
+        android:text="Hint:To Look up your PC's IP address:\n\t\t\t\tUnder CMD enter ipconfig\n\t\t\t\tIf using OSX under terminal enter ifconfig" />
 
     <Button
         android:id="@+id/useDB"
