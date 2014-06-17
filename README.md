@@ -30,8 +30,8 @@ and you'll need a server
 
 ## Log
 
-Now at 2.12
-
+    - 2.14 Change App display name
+    - 2.13 Adjust layout for hdpi devices
     - 2.12 Add textview to display current ppt page
     - 2.11 Change package name
     - 2.0  Full functionable
@@ -43,12 +43,3 @@ Now at 2.12
     - 1.81 Add MouseControl popupwindow info
     - 1.71 Add popupwindow to select from past ip list
     - 1.61 Add sql DB for Storing past ip addresses
-    .
-    .
-    .
-    .
-    .
-    .
-    
-
-

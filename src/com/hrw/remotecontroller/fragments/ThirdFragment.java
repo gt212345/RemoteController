@@ -12,7 +12,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -154,7 +153,7 @@ public class ThirdFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(getActivity(), "IP位置已存取", Toast.LENGTH_SHORT)
+				Toast.makeText(getActivity(), "IP address save", Toast.LENGTH_SHORT)
 						.show();
 			}
 		});
@@ -177,7 +176,6 @@ public class ThirdFragment extends Fragment {
 			mpopupwindow.setBackgroundDrawable(new BitmapDrawable(
 					getResources(), ""));
 			mpopupwindow.update();
-			Log.w("IPdb", IPs.get(0));
 			iplist = (ListView) popupWindowlayout.findViewById(R.id.IPs);
 			ArrayAdapter<String> aad = new ArrayAdapter<String>(getActivity()
 					.getApplicationContext(), R.layout.list_ip, IPs);
@@ -190,7 +188,6 @@ public class ThirdFragment extends Fragment {
 						int position, long id) {
 					// TODO Auto-generated method stub
 					ed1.setText(iplist.getItemAtPosition(position).toString());
-					Log.w("onItemclick", "called");
 					mpopupwindow.dismiss();
 				}
 			});
