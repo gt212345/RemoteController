@@ -30,6 +30,7 @@ and you'll need a server
 
 ## Log
 
+	- 2.15 Support for Both Taiwanese and English
     - 2.14 Change App display name
     - 2.13 Adjust layout for hdpi devices
     - 2.12 Add textview to display current ppt page
