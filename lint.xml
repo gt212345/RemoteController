@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="ButtonStyle" severity="ignore" />
     <issue id="CommitTransaction">
         <ignore path="src/com/hrw/remotecontroller/activities/WelcomeActivity.java" />
     </issue>
