@@ -134,20 +134,20 @@ public final class R {
         public static final int welcome=0x7f090007;
     }
     public static final class string {
-        public static final int 0=0x7f07002e;
-        public static final int 1=0x7f07002f;
-        public static final int 2=0x7f070030;
-        public static final int 3=0x7f070031;
-        public static final int 4=0x7f070032;
-        public static final int 5=0x7f070033;
-        public static final int 6=0x7f070034;
-        public static final int 7=0x7f070035;
-        public static final int 8=0x7f070036;
-        public static final int 9=0x7f070037;
         public static final int Welcome=0x7f070012;
         public static final int action_example=0x7f070010;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
+        public static final int b0=0x7f07002e;
+        public static final int b1=0x7f07002f;
+        public static final int b2=0x7f070030;
+        public static final int b3=0x7f070031;
+        public static final int b4=0x7f070032;
+        public static final int b5=0x7f070033;
+        public static final int b6=0x7f070034;
+        public static final int b7=0x7f070035;
+        public static final int b8=0x7f070036;
+        public static final int b9=0x7f070037;
         public static final int bac=0x7f07002c;
         public static final int clickconnect=0x7f07001d;
         public static final int clickok=0x7f070018;

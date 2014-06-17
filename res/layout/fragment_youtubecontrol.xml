@@ -66,35 +66,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/5" />
+            android:text="@string/b5" />
 
         <Button
             android:id="@+id/b6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/6" />
+            android:text="@string/b6" />
 
         <Button
             android:id="@+id/b7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/7" />
+            android:text="@string/b7" />
 
         <Button
             android:id="@+id/b8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/8" />
+            android:text="@string/b8" />
 
         <Button
             android:id="@+id/b9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/9" />
+            android:text="@string/b9" />
     </LinearLayout>
 
     <LinearLayout
@@ -109,35 +109,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/0" />
+            android:text="@string/b0" />
 
         <Button
             android:id="@+id/b1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/1" />
+            android:text="@string/b1" />
 
         <Button
             android:id="@+id/b2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/2" />
+            android:text="@string/b2" />
 
         <Button
             android:id="@+id/b3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/3" />
+            android:text="@string/b3" />
 
         <Button
             android:id="@+id/b4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/4" />
+            android:text="@string/b4" />
     </LinearLayout>
 
 </RelativeLayout>
