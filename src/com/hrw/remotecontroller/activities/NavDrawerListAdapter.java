@@ -12,8 +12,8 @@ import android.widget.TextView;
 public class NavDrawerListAdapter extends BaseAdapter {
 	// private LayoutInflater myInflater;
 	Context context;
-	static final String[] controlFragments = new String[] { "PowerPoint Control Mode",
-			"Mouse Control Mode","Youtube Control Mode" };
+	static final String[] controlFragments = new String[] { "PowerPoint Mode",
+			"Mouse Mode","Youtube Mode" };
 
 	public NavDrawerListAdapter(Context ctxt) {
 		this.context = ctxt;

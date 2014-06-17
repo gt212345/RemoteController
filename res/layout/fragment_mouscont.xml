@@ -11,7 +11,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:textSize="20dp"
-        android:text="請在下方螢幕控制滑鼠" />
+        android:textSize="18dp"
+        android:textStyle="italic|bold"
+        android:text="Control cursor on the screen below" />
 
 </RelativeLayout>
