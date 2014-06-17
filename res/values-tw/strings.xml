@@ -1,4 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
+    <string name="app_name">PC Remote Control</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_welcome_fragment">PC Remote Control</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_first_fragment">FirstFragment</string>
+    <string name="title_activity_second_fragment">SecondFragment</string>
+    <string name="title_activity_third_fragment">ThirdFragment</string>
+    <string name="title_activity_fourth_fragment">FourthFragment</string>
+    <string name="title_activity_mouse_controll">MouseControllActivity</string>
+    <string name="title_activity_controll_fragment">ControllFragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="download_link">http://goo.gl/vj1jDO</string>
+    <string name="Welcome">歡迎</string>
+    <string name="toggle">請開啟WIFI\n並確認PC端和手機端連至同一區域網路</string>
+    <string name="first">首先</string>
+    <string name="enterip">輸入PC端的IP位置</string>
+    <string name="next">接著</string>
+    <string name="ok">確認</string>
+    <string name="clickok">輸入完畢後按下確認</string>
+    <string name="hintip">小提示:如欲查詢PC的IP位置:\n\t\t\t\t請在CMD下輸入 ipconfig\n\t\t\t\t若使用OSX 請在終端機下輸入  ifconfig</string>
+    <string name="historicip">歷史紀錄</string>
+    <string name="confirm">請確認Server端已經開啟</string>
+    <string name="connect">連線</string>
+    <string name="clickconnect">確認完成請按下連線</string>
+    <string name="switch1">切換至控制頁面</string>
+    <string name="pptmode">PowerPoint Control Mode</string>
+    <string name="play">Play</string>
+    <string name="stop">Stop</string>
+    <string name="prev">Prev Page</string>
+    <string name="nextp">Next Page</string>
+    <string name="white">WhiteBoard</string>
+    <string name="pptp">PPT  頁數</string>
+    <string name="conf">確認</string>
+    <string name="finally1">最後</string>
+    <string name="cursor">請在下方螢幕控制鼠標</string>
+    <string name="playpause">Play/Pause</string>
+    <string name="vup">Volume Down</string>
+    <string name="vd">Volume Up</string>
+    <string name="bac">Backward</string>
+    <string name="for1">Forward</string>
+    <string name="0">0</string>
+    <string name="1">1</string>
+    <string name="2">2</string>
+    <string name="3">3</string>
+    <string name="4">4</string>
+    <string name="5">5</string>
+    <string name="6">6</string>
+    <string name="7">7</string>
+    <string name="8">8</string>
+    <string name="9">9</string>
+    <string name="tap">點擊模擬滑鼠左鍵 \n長按模擬滑鼠右鍵</string>
+    <string name="paintm">PaintMode</string>
+    <string name="server">請先下載Server</string>
+    <string name="enterurl">請在PC的瀏覽器上輸入下方網址下載</string>
+    <string name="pptc">PPT Control</string>
+    <string name="mousec">Mouse Control</string>
+    <string name="youc">YouTube Control</string>
+    <string name="conts">控制頁面選單</string>
+
 </resources>
