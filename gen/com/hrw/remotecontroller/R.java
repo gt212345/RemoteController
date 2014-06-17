@@ -58,25 +58,25 @@ public final class R {
     }
     public static final class id {
         public static final int First=0x7f0a0017;
-        public static final int IPs=0x7f0a002f;
+        public static final int IPs=0x7f0a002e;
         public static final int RelativeLayout1=0x7f0a001e;
         public static final int Second=0x7f0a0016;
-        public static final int action_settings=0x7f0a0030;
-        public static final int b0=0x7f0a002a;
-        public static final int b1=0x7f0a002b;
-        public static final int b2=0x7f0a002c;
-        public static final int b3=0x7f0a002d;
-        public static final int b4=0x7f0a002e;
-        public static final int b5=0x7f0a0025;
-        public static final int b6=0x7f0a0026;
-        public static final int b7=0x7f0a0027;
-        public static final int b8=0x7f0a0028;
-        public static final int b9=0x7f0a0029;
+        public static final int action_settings=0x7f0a002f;
+        public static final int b0=0x7f0a0029;
+        public static final int b1=0x7f0a002a;
+        public static final int b2=0x7f0a002b;
+        public static final int b3=0x7f0a002c;
+        public static final int b4=0x7f0a002d;
+        public static final int b5=0x7f0a0024;
+        public static final int b6=0x7f0a0025;
+        public static final int b7=0x7f0a0026;
+        public static final int b8=0x7f0a0027;
+        public static final int b9=0x7f0a0028;
         public static final int back=0x7f0a0020;
         public static final int button1=0x7f0a0009;
         public static final int countsend=0x7f0a0014;
         public static final int currentpage=0x7f0a0013;
-        public static final int deleteDB=0x7f0a0031;
+        public static final int deleteDB=0x7f0a0030;
         public static final int down=0x7f0a0023;
         public static final int downloadserver=0x7f0a0019;
         public static final int drawer_layout=0x7f0a0000;
@@ -85,7 +85,6 @@ public final class R {
         public static final int frame_container=0x7f0a0001;
         public static final int imageView1=0x7f0a0018;
         public static final int intent=0x7f0a000b;
-        public static final int linearLayout1=0x7f0a0024;
         public static final int list_slidermenu=0x7f0a0002;
         public static final int nextpage=0x7f0a000f;
         public static final int pagecount=0x7f0a0012;
@@ -135,13 +134,54 @@ public final class R {
         public static final int welcome=0x7f090007;
     }
     public static final class string {
+        public static final int 0=0x7f07002e;
+        public static final int 1=0x7f07002f;
+        public static final int 2=0x7f070030;
+        public static final int 3=0x7f070031;
+        public static final int 4=0x7f070032;
+        public static final int 5=0x7f070033;
+        public static final int 6=0x7f070034;
+        public static final int 7=0x7f070035;
+        public static final int 8=0x7f070036;
+        public static final int 9=0x7f070037;
+        public static final int Welcome=0x7f070012;
         public static final int action_example=0x7f070010;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
+        public static final int bac=0x7f07002c;
+        public static final int clickconnect=0x7f07001d;
+        public static final int clickok=0x7f070018;
+        public static final int conf=0x7f070026;
+        public static final int confirm=0x7f07001b;
+        public static final int connect=0x7f07001c;
+        public static final int conts=0x7f07003f;
+        public static final int cursor=0x7f070028;
         public static final int download_link=0x7f070011;
+        public static final int enterip=0x7f070015;
+        public static final int enterurl=0x7f07003b;
+        public static final int finally1=0x7f070027;
+        public static final int first=0x7f070014;
+        public static final int for1=0x7f07002d;
         public static final int hello_world=0x7f070002;
+        public static final int hintip=0x7f070019;
+        public static final int historicip=0x7f07001a;
+        public static final int mousec=0x7f07003d;
         public static final int navigation_drawer_close=0x7f07000f;
         public static final int navigation_drawer_open=0x7f07000e;
+        public static final int next=0x7f070016;
+        public static final int nextp=0x7f070023;
+        public static final int ok=0x7f070017;
+        public static final int paintm=0x7f070039;
+        public static final int play=0x7f070020;
+        public static final int playpause=0x7f070029;
+        public static final int pptc=0x7f07003c;
+        public static final int pptmode=0x7f07001f;
+        public static final int pptp=0x7f070025;
+        public static final int prev=0x7f070022;
+        public static final int server=0x7f07003a;
+        public static final int stop=0x7f070021;
+        public static final int switch1=0x7f07001e;
+        public static final int tap=0x7f070038;
         public static final int title_activity_controll_fragment=0x7f07000d;
         public static final int title_activity_first_fragment=0x7f070008;
         public static final int title_activity_fourth_fragment=0x7f07000b;
@@ -153,6 +193,11 @@ public final class R {
         public static final int title_section1=0x7f070005;
         public static final int title_section2=0x7f070006;
         public static final int title_section3=0x7f070007;
+        public static final int toggle=0x7f070013;
+        public static final int vd=0x7f07002b;
+        public static final int vup=0x7f07002a;
+        public static final int white=0x7f070024;
+        public static final int youc=0x7f07003e;
     }
     public static final class style {
         /** 

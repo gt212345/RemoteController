@@ -13,6 +13,6 @@
         android:gravity="center"
         android:textStyle="italic|bold"
         android:textSize="15sp"
-        android:text="Tap on the screen for mouse button-left \nLong press for mouse button-right" />
+        android:text="@string/tap" />
 
 </LinearLayout>

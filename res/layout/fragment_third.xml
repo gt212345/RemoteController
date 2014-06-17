@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="Please enter your PC's IP address"
+        android:text="@string/enterip"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:text="Next"
+        android:text="@string/next"
         android:textSize="30sp"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editText1"
         android:layout_below="@+id/editText1"
-        android:text="OK"
+        android:text="@string/ok"
         android:textSize="20sp"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
-        android:text="Click OK after finishing typing"
+        android:text="@string/clickok"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -71,7 +71,7 @@
         android:textStyle="italic|bold"
         android:textColor="#FFFF555F"
         android:visibility="invisible"
-        android:text="Hint:To Look up your PC's IP address:\n\t\t\t\tUnder CMD enter ipconfig\n\t\t\t\tIf using OSX under terminal enter ifconfig" />
+        android:text="@string/hintip" />
 
     <Button
         android:id="@+id/useDB"
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText1"
-        android:text="Historic IP"
+        android:text="@string/historicip"
         android:visibility="invisible" />
 
 </RelativeLayout>

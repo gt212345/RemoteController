@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="PowerPoint Control Mode"
+        android:text="@string/pptmode"
         android:textColor="#ff0486ff"
         android:textSize="25sp"
         android:textStyle="italic" />
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:clickable="false"
-            android:text="Play" />
+            android:text="@string/play" />
 
         <Button
             android:id="@+id/stop"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:clickable="false"
-            android:text="Stop" />
+            android:text="@string/stop" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:clickable="false"
-            android:text="Prev Page" />
+            android:text="@string/prev" />
 
         <Button
             android:id="@+id/nextpage"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:clickable="false"
-            android:text="Next Page" />
+            android:text="@string/nextp" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,14 +70,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="paintmode" />
+            android:text="@string/paintm" />
 
         <Button
             android:id="@+id/whiteout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="whiteout" />
+            android:text="@string/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:ems="10"
-            android:hint="PPT  pages"
+            android:hint="@string/pptp"
             android:inputType="number" >
 
             <requestFocus />
@@ -111,7 +111,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirm" />
+        android:text="@string/conf" />
 
     <SeekBar
         android:id="@+id/scrollpage"

@@ -23,7 +23,7 @@
         android:textColor="#FFF9A009"
         android:textSize="20sp"
         android:gravity="center"
-        android:text="You'll need to download the server first to begin" />
+        android:text="@string/server" />
 
     <TextView
         android:id="@+id/url"
@@ -35,7 +35,7 @@
         android:layout_marginTop="33dp"
         android:textColor="#F009AFF9"
         android:gravity="center"
-        android:text="Enter the URL below in your PC&apos;s browser to start downloading"
+        android:text="@string/enterurl"
         android:textSize="20sp"
         android:textStyle="italic|bold" />
 

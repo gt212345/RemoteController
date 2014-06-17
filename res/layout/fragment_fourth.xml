@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Please confirm server is running"
+        android:text="@string/confirm"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:text="Finally"
+        android:text="@string/finally1"
         android:textSize="30sp"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
@@ -32,7 +32,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="Connect"
+        android:text="@string/connect"
         android:textStyle="italic" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button1"
-        android:text="If does click connect"
+        android:text="@string/clickconnect"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -54,7 +54,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="59dp"
-        android:text="Switch to Control Menu"
+        android:text="@string/switch1"
         android:textStyle="italic|bold"
         android:visibility="invisible" />
 

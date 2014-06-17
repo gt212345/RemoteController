@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle("Control Mode Selection");
+				getActionBar().setTitle(MainActivity.this.getString(R.string.conts));
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
 			}
@@ -124,17 +124,17 @@ public class MainActivity extends Activity {
 		case 0:
 			fragment = new PptControlFragment();
 			mFragmentTransaction.addToBackStack(null);
-			mTitle = "PPT Control";
+			mTitle = this.getString(R.string.pptc);
 			break;
 		case 1:
 			fragment = new MousContFragment();
 			mFragmentTransaction.addToBackStack(null);
-			mTitle = "Mouse Control";
+			mTitle = this.getString(R.string.mousec);
 			break;
 		case 2:
 			fragment = new YoutubeControl();
 			mFragmentTransaction.addToBackStack(null);
-			mTitle = "Music Control";
+			mTitle = this.getString(R.string.youc);
 		default:
 			break;
 		}
