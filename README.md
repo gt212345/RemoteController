@@ -1,23 +1,12 @@
 RemoteController
 ================
-Hi this is my school project.
-
-It's called remote controller, can run it on your android devices and control your PC with several function. 
-
-Following a few
-
-**PowerPoint**
-    
-You can just use your phone to control the presenting page while giving out a speech.
+Hi this is a simple app (so far) still under developing.
+Any suggestion or pull request will be welcome!
     
 **Mouse behave**
     
  Use your deivce's touch screen to control PC's cursor.(Developing)
-    
-**Shut down PC**
-    
- When you're in bed and is annoyed by the sound of the fans, just let it sleep.
-     
+         
 # Git Clone
     git@github.com:gt212345/RemoteController.git (android app)
 and you'll need a server
@@ -25,11 +14,12 @@ and you'll need a server
 	git@github.com:gt212345/RCServer.git(.jar)
 
 # Requirments
-    - Android API level 10 and above (Honeycomb)
+    - Android API level 14 and above (Honeycomb)
     - Java environment on PC
 
 ## Log
-
+	
+	- 3.0 Update to Android Studio
 	- 2.21 Fix VariableDeclarationId Warning
 	- 2.20 Change min Support API to 14
 	- 2.15 Support for Both Taiwanese and English
