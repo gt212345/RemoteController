@@ -179,10 +179,12 @@ public class IntroActivity extends AppCompatActivity implements hrw.remotecontro
     @Override
     protected void onPause() {
         super.onPause();
-        try {
-            outputStream.writeObject(new int[]{Utilities.END});
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (outputStream != null) {
+            try {
+                outputStream.writeObject(new int[]{Utilities.END});
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
